@@ -99,7 +99,7 @@ var form = {
 <jsp:include page="../template/list-template.jsp">
 	<jsp:param name="listContainerId" value="interviewContainer"/>
 	<jsp:param name="listId" value="userDataTable"/>
-	<jsp:param name="addPage" value="interview"/>
+	<jsp:param name="addPage" value="interviewForm"/>
 </jsp:include>
 
 </html>

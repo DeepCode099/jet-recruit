@@ -32,5 +32,6 @@
 	<script src="theme/js/deznav-init.js"></script>
 	<script src="theme/js/demo.js"></script>
     <script src="theme/js/styleSwitcher.js"></script>
+    
 </body>
 </html>

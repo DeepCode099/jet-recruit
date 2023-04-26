@@ -59,9 +59,33 @@ public class RecruitmentController {
 	}
 	
 	@RequestMapping("/interview_list")
-	public String InterviewList() {
+	public String interviewsList() {
 		System.out.println("InterviewList");
 		return "interview_list";
 		
 	}
+	@RequestMapping("/interviewForm")
+	public String interviewForm() {
+		System.out.println("InterviewList");
+		return "interview";
+		
+	}
+	
+	@RequestMapping("/department_list")
+	public String departmentList() {
+		System.out.println("departmentList");
+		return "department_list";
+		
+	}
+	
+	@RequestMapping("/department")
+	public String department() {
+		System.out.println("department");
+		return "department";
+		
+	}
+	
+	
+	
+	
 }

@@ -15,7 +15,7 @@
 			<div class="col-md-3">
 			<%-- 	<%@include file="left-nav.jsp"%>
 			 --%></div>
-	
+		
 			<div class="col-md-9" id="selectionPhaseFormContainer" >
 			</div>
 		</div>
