@@ -33,12 +33,15 @@ var form = {
 	"enctype": "multipart/form-data",
 	"fields": [ 
 		{
-			"type": "text",
-			"name": "selectionphase",
-			"label": "Selection Phase",
-			"listable":false,
-			"searchable": false
-			
+			"type": "select",
+			"name": "selectionPhaseId",
+			"label": "Selection Phase ",
+			"provider": {
+						"url": "http://localhost:9099/api/v1/selectionPhase",
+						"value": "id",
+						"label": "name"
+					},
+					"required": true
 		}
 	],
 	"actions": [{
