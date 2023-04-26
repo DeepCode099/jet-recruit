@@ -42,7 +42,7 @@
 					"type": "javascript",
 					"func": "submitForm(event)",
 					"method": "post",
-					"url": "http://localhost:8082/api/v1/user"
+					"url": "http://localhost:9098/jet/pis/designation"
 				},
 				"cssClass": "btn-primary"
 			}, {

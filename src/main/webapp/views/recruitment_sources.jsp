@@ -25,13 +25,15 @@
 		"enctype": "multipart/form-data",
 		"fields": [ 
 			{
-				"type": "text",
+				"type": "select",
 				"name": "recruitmentSourceId",
 				"label": "Recruitment Source",
-				"required": true,
-				"listable":false,
-				"searchable": false
-				
+				"provider": {
+					"url": "http://localhost:9099/api/v1/recruitementSource",
+					"value": "id",
+					"label": "name"
+				},
+				"required": true
 			}
 		],
 		"actions": [{
@@ -43,7 +45,7 @@
 					"type": "javascript",
 					"func": "submitForm(event)",
 					"method": "post",
-					"url": "http://localhost:8082/api/v1/user"
+					"url": "http://localhost:9099/api/v1/recruitementSource"
 				},
 				"cssClass": "btn-primary"
 			}, {

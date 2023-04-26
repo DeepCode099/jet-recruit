@@ -57,34 +57,34 @@
 				"label": "Applied Date ",
 				"required": false
 			},
-			{
-				"type": "select",
-				"name": "recruitmentSourceId",
-				"label": "Recruitment Source",
-				"provider": {
-					"url": "http://localhost:8082/api/v1/country",
-					"value": "id",
-					"label": "name"
-				},
-				"required": true
-			},
+			
 			 {
 					"type": "select",
 					"name": "departmentId",
 					"label": "Department",
 					"provider": {
-						"url": "http://localhost:8082/api/v1/country",
+						"url": "http://localhost:9098/jet/pis/department",
 						"value": "id",
 						"label": "name"
 					},
 					"required": true
+			},{
+				"type": "select",
+				"name": "recruitmentSourceId",
+				"label": "Recruitment Source",
+				"provider": {
+					"url": "http://localhost:9099/api/v1/recruitementSource",
+					"value": "id",
+					"label": "name"
+				},
+				"required": true
 			},
 			{
 				"type": "select",
 				"name": "designationId",
 				"label": "Designation ",
 				"provider": {
-							"url": "http://localhost:8082/api/v1/country",
+							"url": "http://localhost:9098/jet/pis/designation",
 							"value": "id",
 							"label": "name"
 						},
@@ -92,21 +92,10 @@
 			},
 			{
 				"type": "select",
-				"name": "recruiterId",
-				"label": "Recruiter",
-				"provider": {
-							"url": "http://localhost:8082/api/v1/country",
-									"value": "id",
-									"label": "name"
-							},
-				"required": true
-			},
-			{
-				"type": "select",
 				"name": "selectionPhaseId",
-				"label": "Designation ",
+				"label": "Selection Phase ",
 				"provider": {
-							"url": "http://localhost:8082/api/v1/country",
+							"url": "http://localhost:9099/api/v1/selectionPhase",
 							"value": "id",
 							"label": "name"
 						},
@@ -116,8 +105,8 @@
 		
 			{
 				"type": "file",
-				"name": "aadhaar",
-				"label": "Aadhaar",
+				"name": "resume",
+				"label": "Resume",
 				"accept": "image/png, image/jpeg"
 			}
 		],

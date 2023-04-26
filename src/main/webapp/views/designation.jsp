@@ -24,12 +24,15 @@
 		"enctype": "multipart/form-data",
 		"fields": [ 
 			{
-				"type": "text",
-				"name": "designation",
-				"label": "Designations",
-				"listable":false,
-				"searchable": false
-				
+				"type": "select",
+				"name": "designationId",
+				"label": "Designation ",
+				"provider": {
+							"url": "http://localhost:9098/jet/pis/designation",
+							"value": "id",
+							"label": "name"
+						},
+						"required": true
 			}
 		],
 		"actions": [{
@@ -41,7 +44,7 @@
 					"type": "javascript",
 					"func": "submitForm(event)",
 					"method": "post",
-					"url": "http://localhost:8082/api/v1/user"
+					"url": "http://localhost:9098/jet/pis/designation"
 				},
 				"cssClass": "btn-primary"
 			}, {
