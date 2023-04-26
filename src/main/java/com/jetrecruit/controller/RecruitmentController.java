@@ -44,5 +44,24 @@ public class RecruitmentController {
 		
 	}
 	
+	@RequestMapping("/selection_phases_list")
+	public String selectionPhaseList() {
+		System.out.println("selection_phases_list");
+		return "selection_phases_list";
+		
+	}
 
+	@RequestMapping("/selection_phases")
+	public String selectionPhases() {
+		System.out.println("selection-phases");
+		return "selection_phases";
+		
+	}
+	
+	@RequestMapping("/interview_list")
+	public String InterviewList() {
+		System.out.println("InterviewList");
+		return "interview_list";
+		
+	}
 }
