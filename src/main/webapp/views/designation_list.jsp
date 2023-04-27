@@ -28,7 +28,7 @@
 		"fields": [
 			{
 				"type": "text",
-				"name": " designation",
+				"name": " designationid",
 				"label": "Designation",
 				"required": true,
 				"placeHolder": "Designation"

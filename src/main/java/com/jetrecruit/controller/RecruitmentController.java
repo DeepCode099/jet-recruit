@@ -85,6 +85,17 @@ public class RecruitmentController {
 		
 	}
 	
+	@RequestMapping("/employee")
+	public String employee() {
+		return "employee";
+		
+	}
+	@RequestMapping("/employeeForm")
+	public String employeeList() {
+		System.out.println("department");
+		return "employee_list";
+		
+	}
 	
 	
 	

@@ -1,43 +1,37 @@
  <!DOCTYPE html>
 <html>
 <head>
-<title>Selection Phases List</title>
+
 <%@include file="../theme/cdn.jsp" %>
 </head>
-<!-- body  -->
+
 <body>
- <%@include file="../theme/nav_header.jsp" %>
-<%@include file="../theme/header.jsp" %>
 	<div class="container">
 	
 		<div class="row">
-		<%-- <div class="col-md-3">
-		 <%@include file="../theme/nav_header.jsp" %></div> --%>
-		 <div class="col-md-3">
-			<%-- 	<%@include file="left-nav.jsp"%>
-			 --%></div>
-			<div class="col-md-9" id="departmentListContainer" >
+		<div class="col-md-3">
+				<%@include file="../theme/left_side_navigation.jsp"%>
+			</div>
+			<div class="col-md-9" id="employeeList" >
 			</div>
 		</div>
 	</div>
 </body>
 
-
-<!-- json  -->
-
 <script>
-var form = {
-		"id": "Department",
-		"title" : "Department",
+	var form = {
+		"id": "employee",
+		"title" : "Employee",
+		
 		"namespace" : "",
 		"enctype": "multipart/form-data",
 		"fields": [
 			{
 				"type": "text",
-				"name": "department",
-				"label": "Department",
+				"name": " employeeid",
+				"label": "Employee",
 				"required": true,
-				
+				"placeHolder": "Employee"
 			}],
 		"actions": [{
 				"name": "save",
@@ -48,7 +42,7 @@ var form = {
 					"type": "javascript",
 					"func": "submitForm(event)",
 					"method": "post",
-					"url": "http://localhost:9098/jet/pis/department"
+					"url": "http://localhost:9098/jet/pis/employee"
 				},
 				"cssClass": "btn-primary"
 			}, {
@@ -65,7 +59,7 @@ var form = {
 			{
 				"name": "add",
 				"type": "button",
-				"label": "Add Department",
+				"label": "Add Employee",
 				"applyTo": "list",
 				"cssClass": "btn-danger"
 			}
@@ -76,11 +70,11 @@ var form = {
 		}
 	};
 </script>
-<%@include file="../theme/js_scripts.jsp" %>
+
 <jsp:include page="../template/list-template.jsp">
-	<jsp:param name="listContainerId" value="departmentListContainer"/>
-	<jsp:param name="listId" value="departmentListTable"/>
-	<jsp:param name="addPage" value="department"/>
+	<jsp:param name="listContainerId" value="employeeList"/>
+	<jsp:param name="listId" value="userDataTable"/>
+	<jsp:param name="addPage" value="employee"/>
 </jsp:include>
 
 </html>

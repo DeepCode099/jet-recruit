@@ -50,7 +50,7 @@ var form = {
 				"type": "javascript",
 				"func": "submitForm(event)",
 				"method": "post",
-				"url": "http://localhost:8080/api/v1/selectionphase"
+				"url": "http://localhost:9098/jet/pis/department"
 			},
 			"cssClass": "btn-primary"
 		}, {

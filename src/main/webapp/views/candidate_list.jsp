@@ -64,7 +64,7 @@ var form = {
 				"name": "recruitmentSourceId",
 				"label": "Recruitment Source",
 				"provider": {
-					"url": "http://localhost:8082/api/v1/country",
+					"url": "http://localhost:9099/api/v1/recruitementSource",
 					"value": "id",
 					"label": "name"
 				},
@@ -75,7 +75,7 @@ var form = {
 					"name": "departmentId",
 					"label": "Department",
 					"provider": {
-						"url": "http://localhost:8082/api/v1/country",
+						"url": "http://localhost:9098/jet/pis/department",
 						"value": "id",
 						"label": "name"
 					},
@@ -86,7 +86,7 @@ var form = {
 				"name": "designationId",
 				"label": "Designation ",
 				"provider": {
-							"url": "http://localhost:8082/api/v1/country",
+							"url": "http://localhost:9098/jet/pis/designation",
 							"value": "id",
 							"label": "name"
 						},
@@ -97,7 +97,7 @@ var form = {
 				"name": "recruiterId",
 				"label": "Recruiter",
 				"provider": {
-							"url": "http://localhost:8082/api/v1/country",
+							"url": "http://localhost:9099/api/v1/recruitementSource",
 									"value": "id",
 									"label": "name"
 							},
@@ -108,7 +108,7 @@ var form = {
 				"name": "selectionPhaseId",
 				"label": "Designation ",
 				"provider": {
-							"url": "http://localhost:8082/api/v1/country",
+							"url": "http://localhost:9098/jet/pis/designation",
 							"value": "id",
 							"label": "name"
 						},

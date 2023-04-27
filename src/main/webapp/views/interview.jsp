@@ -145,7 +145,7 @@ var form = {
 					"type": "javascript",
 					"func": "submitForm(event)",
 					"method": "post",
-					"url": "http://localhost:8082/api/v1/user"
+					"url": "http://localhost:9099/api/v1/interview"
 				},
 				"cssClass": "btn-primary"
 			}, {

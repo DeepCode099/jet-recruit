@@ -1,6 +1,7 @@
  <!DOCTYPE html>
 <html>
 <head>
+
 <%@include file="../theme/cdn.jsp" %>
 </head>
 <!-- body  -->
@@ -10,7 +11,7 @@
 		<div class="col-md-3">
 				<%@include file="../theme/left_side_navigation.jsp"%>
 			</div>
-			<div class="col-md-9" id="designation_list" >
+			<div class="col-md-9" id="employeeForm" >
 			</div>
 		</div>
 	</div>
@@ -18,15 +19,15 @@
 
 <script>
 	var form = {
-		"id": "designations",
-		"title" : "Designations",
+		"id": "employee",
+		"title" : "Employee",
 		"namespace" : "",
 		"enctype": "multipart/form-data",
 		"fields": [ 
 			{
 				"type": "text",
-				"name": "designationId",
-				"label": "Designation",
+				"name": "employee",
+				"label": "Employee",
 				"listable":false,
 				"searchable": false
 				
@@ -41,7 +42,7 @@
 					"type": "javascript",
 					"func": "submitForm(event)",
 					"method": "post",
-					"url": "http://localhost:9098/jet/pis/designation"
+					"url": ""
 				},
 				"cssClass": "btn-primary"
 			}, {
@@ -59,10 +60,10 @@
 	};
 </script>
 <jsp:include page="../template/form-template.jsp">
-	<jsp:param name="formContainerId" value="designation_list" />
-	 <jsp:param name="formId" value="recruitmentSourceForm" />
-	<jsp:param name="cancelPage" value="designation_list"/>
-	<jsp:param name="successPage" value="designation_list"/>
+	<jsp:param name="formContainerId" value="employeeForm" />
+	 <jsp:param name="formId" value="employeeForm" />
+	<jsp:param name="cancelPage" value="employeeForm"/>
+	<jsp:param name="successPage" value="employeeForm"/>
 </jsp:include>
 <script>
 
