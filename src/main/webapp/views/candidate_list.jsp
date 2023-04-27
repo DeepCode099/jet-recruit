@@ -3,8 +3,7 @@
 <head>
 <%@include file="../theme/cdn.jsp" %>
 </head>
-
-<body>
+ <body>
 	<div class="row">
 		<div class="col-md-3">
 			<%@include file="../theme/nav_header.jsp"%>
@@ -12,14 +11,27 @@
 		</div>
 		<div class="col-md-9">
 			<div class="container">
-			<div  id="candidateForm"  style="margin-top:8%"></div>
+			<div  id="candidate"  style="margin-top:8%"></div>
 			</div>
 		</div>
 	</div>
-</body>
+</body> 
+
+<%-- <body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<%@include file="../theme/left_side_navigation.jsp"%>
+			</div>
+	
+			<div class="col-md-9" id="candidate" >
+			</div>
+		</div>
+	</div>
+</body> --%>
 
 <script>
-	var form = {
+var form = {
 		"id": "candiateForm",
 		"title" : "Candidate Form",
 		"namespace" : "",
@@ -62,7 +74,7 @@
 				"name": "recruitmentSourceId",
 				"label": "Recruitment Source",
 				"provider": {
-					"url": "http://localhost:8082/api/v1/country",
+					"url": "http://localhost:9098/api/v1/recruitementSource",
 					"value": "id",
 					"label": "name"
 				},
@@ -73,7 +85,7 @@
 					"name": "departmentId",
 					"label": "Department",
 					"provider": {
-						"url": "http://localhost:8082/api/v1/country",
+						"url": "http://localhost:9097/jet/pis/department",
 						"value": "id",
 						"label": "name"
 					},
@@ -84,7 +96,7 @@
 				"name": "designationId",
 				"label": "Designation ",
 				"provider": {
-							"url": "http://localhost:8082/api/v1/country",
+							"url": "http://localhost:9097/jet/pis/designation",
 							"value": "id",
 							"label": "name"
 						},
@@ -95,7 +107,7 @@
 				"name": "recruiterId",
 				"label": "Recruiter",
 				"provider": {
-							"url": "http://localhost:8082/api/v1/country",
+							"url": "http://localhost:9098/api/v1/recruitementSource",
 									"value": "id",
 									"label": "name"
 							},
@@ -106,7 +118,7 @@
 				"name": "selectionPhaseId",
 				"label": "Designation ",
 				"provider": {
-							"url": "http://localhost:8082/api/v1/country",
+							"url": "http://localhost:9097/jet/pis/designation",
 							"value": "id",
 							"label": "name"
 						},
@@ -130,7 +142,7 @@
 					"type": "javascript",
 					"func": "submitForm(event)",
 					"method": "post",
-					"url": "http://localhost:8082/api/v1/user"
+					"url": "http://localhost:9098/api/v1/candidate"
 				},
 				"cssClass": "btn-primary"
 			}, {
@@ -155,13 +167,10 @@
 	};
 </script>
 <%@include file="../theme/js_scripts.jsp" %>
-<jsp:include page="../template/form-template.jsp">
-	<jsp:param name="formContainerId" value="candidateForm" />
-	<jsp:param name="formId" value="userForm" />
-	<jsp:param name="cancelPage" value="candidate_list" />
-	<jsp:param name="successPage" value="candidate_list" />
+<jsp:include page="../template/list-template.jsp">
+	<jsp:param name="listContainerId" value="candidate"/>
+	<jsp:param name="listId" value="userDataTable"/>
+	<jsp:param name="addPage" value="candidate"/>
 </jsp:include>
-<script>
 
-</script>
 </html>

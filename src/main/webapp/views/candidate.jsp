@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 <%@include file="../theme/cdn.jsp" %>
 </head>
@@ -13,16 +12,15 @@
 		</div>
 		<div class="col-md-9">
 			<div class="container">
-			<div  id="candidate"  style="margin-top:8%"></div>
+			<div  id="candidateForm"  style="margin-top:8%"></div>
 			</div>
 		</div>
 	</div>
 </body>
 
 
-
 <script>
-var form = {
+	var form = {
 		"id": "candiateForm",
 		"title" : "Candidate Form",
 		"namespace" : "",
@@ -60,19 +58,7 @@ var form = {
 				"label": "Applied Date ",
 				"required": false
 			},
-		
 			
-			{
-				"type": "select",
-				"name": "recruitmentSourceId",
-				"label": "Recruitment Source",
-				"provider": {
-					"url": "http://localhost:9098/api/v1/recruitementSource",
-					"value": "id",
-					"label": "name"
-				},
-				"required": true
-			},
 			 {
 					"type": "select",
 					"name": "departmentId",
@@ -83,6 +69,16 @@ var form = {
 						"label": "name"
 					},
 					"required": true
+			},{
+				"type": "select",
+				"name": "recruitmentSourceId",
+				"label": "Recruitment Source",
+				"provider": {
+					"url": "http://localhost:9098/api/v1/recruitementSource",
+					"value": "id",
+					"label": "name"
+				},
+				"required": true
 			},
 			{
 				"type": "select",
@@ -97,21 +93,10 @@ var form = {
 			},
 			{
 				"type": "select",
-				"name": "recruiterId",
-				"label": "Recruiter",
-				"provider": {
-							"url": "http://localhost:9097/jet/pis/employee",
-									"value": "id",
-									"label": "name"
-							},
-				"required": true
-			},
-			{
-				"type": "select",
 				"name": "selectionPhaseId",
-				"label": "Designation ",
+				"label": "Selection Phase ",
 				"provider": {
-							"url": "",
+							"url": "http://localhost:9098/api/v1/selectionPhase",
 							"value": "id",
 							"label": "name"
 						},
@@ -121,8 +106,8 @@ var form = {
 		
 			{
 				"type": "file",
-				"name": "aadhaar",
-				"label": "Aadhaar",
+				"name": "resume",
+				"label": "Resume",
 				"accept": "image/png, image/jpeg"
 			}
 		],
@@ -160,11 +145,13 @@ var form = {
 	};
 </script>
 <%@include file="../theme/js_scripts.jsp" %>
-<jsp:include page="../template/list-template.jsp">
-	<jsp:param name="listContainerId" value="candidate"/>
-	<jsp:param name="listId" value="userDataTable"/>
-	<jsp:param name="addPage" value="candidate"/>
+<jsp:include page="../template/form-template.jsp">
+	<jsp:param name="formContainerId" value="candidateForm" />
+	<jsp:param name="formId" value="userForm" />
+	<jsp:param name="cancelPage" value="candidate_list" />
+	<jsp:param name="successPage" value="candidate_list" />
 </jsp:include>
+<script>
 
+</script>
 </html>
-
