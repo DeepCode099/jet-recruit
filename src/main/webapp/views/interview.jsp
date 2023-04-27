@@ -82,52 +82,25 @@ var form = {
 				"label": "InterViewDate",
 				"required": false
 			},
-		  /*  {
-				"type": "group",
-				"name": "nameGroup",
-				"label": "name",
-				"cols": 2,
-				"fields": [
-					{
-						"type": "time",
-						"name": "startTime",
-						"label": "StartTime",
-						"required": true,
-						"provider": {
-							"url": "http://localhost:8082/api/v1/city/20600",
-							"value": "id",
-							"label": "name",
-							"params":[
-								{"name":"startId", "value":"#state"},
-								{"name":"deleted", "value":"0"}
-							]
-
-						}
-					}, {
-						"type": "time",
-						"name": "endTime",
-						"label": "EndTime",
-						"required": true,
-						"provider": {
-							"url": "http://localhost:8082/api/v1/city/20600",
-							"value": "id",
-							"label": "name",
-							"params":[
-								{"name":"stateId", "value":"#state"},
-								{"name":"deleted", "value":"0"}
-							]
-
-						}
-					}]
-			}, 
- */		
 			{
-				"type": "text",
+				"type" : "time",
+				"name" : "startTime",
+				"label" : "Inteview Start Time",
+				"step" : "2",
+				"required" : true
+			},
+			{
+				"type" : "time",
+				"name" : "endTime",
+				"step" : "2",
+				"label" : "Inteview End Time",
+				"required" : true
+			},{
+				"type": "textarea",
 				"name": "remarks",
 				"label": "Remarks",
 				"required": false
 			}, 
-			
 			{
 				"type": "text",
 				"name": "Result",

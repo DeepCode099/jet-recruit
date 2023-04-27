@@ -15,10 +15,28 @@
   </div>
 </script>
 
+<script id="jf-textarea-template" type="text/x-handlebars-template">
+  <div class="form-group">
+    <label for="{{name}}" class="form-label">{{label}}</label>
+    <textarea class="form-control" name="{{name}}" placeholder="{{placeHolder}}" id="{{name}}" {{#if required}}required{{/if}}>{{value}}</textarea>
+  </div>
+</script>
+
+<script id="jf-hidden-template" type="text/x-handlebars-template">
+  <input type="{{type}}" name="{{name}}" value="{{value}}" id="{{name}}">
+</script>
+
 <script id="jf-date-template" type="text/x-handlebars-template">
   <div class="form-group">
     <label for="{{name}}" class="form-label">{{label}}</label>
     <input type="{{type}}" class="form-control" name="{{name}}" id="{{name}}" value="{{value}}">
+  </div>
+</script>
+
+<script id="jf-time-template" type="text/x-handlebars-template">
+  <div class="form-group">
+    <label for="{{name}}" class="form-label">{{label}}</label>
+    <input type="{{type}}" class="form-control" name="{{name}}" id="{{name}}" step = "{{step}}" value="{{value}}"{{#if required}} required{{/if}}>
   </div>
 </script>
 
@@ -206,7 +224,9 @@ var formId='<%=request.getParameter("formId")%>';
 
 const templates = {            //object for mapping object to id
     text: '#jf-text-template',
+    textarea : '#jf-textarea-template',
     date: '#jf-date-template',
+    time : '#jf-time-template',
     submit: '#jf-button-template',
     email: '#jf-email-template',
     password: '#jf-password-template',
@@ -214,6 +234,7 @@ const templates = {            //object for mapping object to id
     select : '#jf-select-template',
     radio: '#jf-radio-template',
     checkbox : '#jf-checkbox-template',
+    hidden : '#jf-hidden-template',
     file : '#jf-file-template',
     list : '#jf-list-template',
     form : '#jf-form-template',
