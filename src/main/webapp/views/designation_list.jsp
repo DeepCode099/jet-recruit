@@ -1,18 +1,18 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <%@include file="../theme/cdn.jsp" %>
 </head>
 
 <body>
-	<div class="container">
-	
-		<div class="row">
-		
+	<div class="row">
 		<div class="col-md-3">
-				<%@include file="../theme/left_side_navigation.jsp"%>
-			</div>
-			<div class="col-md-9" id="designation" >
+			<%@include file="../theme/nav_header.jsp"%>
+			<%@include file="../theme/header.jsp"%>
+		</div>
+		<div class="col-md-9">
+			<div class="container">
+			<div  id="designation"  style="margin-top:8%"></div>
 			</div>
 		</div>
 	</div>
@@ -22,7 +22,7 @@
 	var form = {
 		"id": "Designations",
 		"title" : "Designations",
-		
+		"subTitle" : "Designations",
 		"namespace" : "",
 		"enctype": "multipart/form-data",
 		"fields": [
@@ -42,7 +42,7 @@
 					"type": "javascript",
 					"func": "submitForm(event)",
 					"method": "post",
-					"url": "http://localhost:9098/jet/pis/designation"
+					"url": "http://localhost:8082/api/v1/user"
 				},
 				"cssClass": "btn-primary"
 			}, {
@@ -70,7 +70,7 @@
 		}
 	};
 </script>
-
+<%@include file="../theme/js_scripts.jsp" %>
 <jsp:include page="../template/list-template.jsp">
 	<jsp:param name="listContainerId" value="designation"/>
 	<jsp:param name="listId" value="userDataTable"/>
@@ -78,3 +78,4 @@
 </jsp:include>
 
 </html>
+

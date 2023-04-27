@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 <%@include file="../theme/cdn.jsp" %>
 </head>
-<!-- body  -->
+
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-3">
-				<%@include file="../theme/left_side_navigation.jsp"%>
+	<div class="row">
+		<div class="col-md-3">
+			<%@include file="../theme/nav_header.jsp"%>
+			<%@include file="../theme/header.jsp"%>
+		</div>
+		<div class="col-md-9">
+			<div class="container">
+			<div  id="candidate"  style="margin-top:8%"></div>
 			</div>
-			<div class="col-md-9" id="candidateForm"></div>
 		</div>
 	</div>
 </body>
 
 
-<!-- json  -->
 
 <script>
-	var form = {
+var form = {
 		"id": "candiateForm",
 		"title" : "Candidate Form",
 		"namespace" : "",
@@ -57,34 +60,36 @@
 				"label": "Applied Date ",
 				"required": false
 			},
+		
 			
+			{
+				"type": "select",
+				"name": "recruitmentSourceId",
+				"label": "Recruitment Source",
+				"provider": {
+					"url": "http://localhost:9098/api/v1/recruitementSource",
+					"value": "id",
+					"label": "name"
+				},
+				"required": true
+			},
 			 {
 					"type": "select",
 					"name": "departmentId",
 					"label": "Department",
 					"provider": {
-						"url": "http://localhost:9098/jet/pis/department",
+						"url": "http://localhost:9097/jet/pis/department",
 						"value": "id",
 						"label": "name"
 					},
 					"required": true
-			},{
-				"type": "select",
-				"name": "recruitmentSourceId",
-				"label": "Recruitment Source",
-				"provider": {
-					"url": "http://localhost:9099/api/v1/recruitementSource",
-					"value": "id",
-					"label": "name"
-				},
-				"required": true
 			},
 			{
 				"type": "select",
 				"name": "designationId",
 				"label": "Designation ",
 				"provider": {
-							"url": "http://localhost:9098/jet/pis/designation",
+							"url": "http://localhost:9097/jet/pis/designation",
 							"value": "id",
 							"label": "name"
 						},
@@ -92,10 +97,21 @@
 			},
 			{
 				"type": "select",
-				"name": "selectionPhaseId",
-				"label": "Selection Phase ",
+				"name": "recruiterId",
+				"label": "Recruiter",
 				"provider": {
-							"url": "http://localhost:9099/api/v1/selectionPhase",
+							"url": "http://localhost:9097/jet/pis/employee",
+									"value": "id",
+									"label": "name"
+							},
+				"required": true
+			},
+			{
+				"type": "select",
+				"name": "selectionPhaseId",
+				"label": "Designation ",
+				"provider": {
+							"url": "",
 							"value": "id",
 							"label": "name"
 						},
@@ -105,8 +121,8 @@
 		
 			{
 				"type": "file",
-				"name": "resume",
-				"label": "Resume",
+				"name": "aadhaar",
+				"label": "Aadhaar",
 				"accept": "image/png, image/jpeg"
 			}
 		],
@@ -119,7 +135,7 @@
 					"type": "javascript",
 					"func": "submitForm(event)",
 					"method": "post",
-					"url": "http://localhost:8082/api/v1/user"
+					"url": "http://localhost:9098/api/v1/candidate"
 				},
 				"cssClass": "btn-primary"
 			}, {
@@ -143,13 +159,12 @@
 		}
 	};
 </script>
-<jsp:include page="../template/form-template.jsp">
-	<jsp:param name="formContainerId" value="candidateForm" />
-	<jsp:param name="formId" value="userForm" />
-	<jsp:param name="cancelPage" value="candidate_list" />
-	<jsp:param name="successPage" value="candidate_list" />
+<%@include file="../theme/js_scripts.jsp" %>
+<jsp:include page="../template/list-template.jsp">
+	<jsp:param name="listContainerId" value="candidate"/>
+	<jsp:param name="listId" value="userDataTable"/>
+	<jsp:param name="addPage" value="candidate"/>
 </jsp:include>
-<script>
 
-</script>
 </html>
+

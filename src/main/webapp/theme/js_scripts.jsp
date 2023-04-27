@@ -26,7 +26,7 @@
 	<!-- Apex Chart -->
 	 <script src="theme/js/moment.js"></script>
 	<script src="theme/js/bootstrap-datetimepicker.min.js"></script>
-
+	
 	<!-- Vectormap -->
    <script src="theme/js/custom.js"></script>
 	<script src="theme/js/deznav-init.js"></script>

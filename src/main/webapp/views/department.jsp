@@ -4,26 +4,21 @@
 <title>Department Form</title>
 <%@include file="../theme/cdn.jsp" %>
 </head>
-<!-- body  -->
-<body>
- <%@include file="../theme/nav_header.jsp" %>
-<%@include file="../theme/header.jsp" %>
-<div class="container">
 
-	
-		<div class="row">
-			<div class="col-md-3">
-			<%-- 	<%@include file="left-nav.jsp"%>
-			 --%></div>
-		
-			<div class="col-md-9" id="departmentFormContainer" >
+<body>
+	<div class="row">
+		<div class="col-md-3">
+			<%@include file="../theme/nav_header.jsp"%>
+			<%@include file="../theme/header.jsp"%>
+		</div>
+		<div class="col-md-9">
+			<div class="container">
+			<div  id="departmentFormContainer"  style="margin-top:8%"></div>
 			</div>
 		</div>
 	</div>
 </body>
 
-
-<!-- json  -->
 
 <script>
 var form = {
@@ -34,7 +29,7 @@ var form = {
 	"fields": [ 
 		{
 			"type": "text",
-			"name": "department",
+			"name": "name",
 			"label": "Department",
 			"listable":false,
 			"searchable": false
@@ -50,7 +45,7 @@ var form = {
 				"type": "javascript",
 				"func": "submitForm(event)",
 				"method": "post",
-				"url": "http://localhost:8080/api/v1/selectionphase"
+				"url": "http://localhost:9097/jet/pis/department"
 			},
 			"cssClass": "btn-primary"
 		}, {

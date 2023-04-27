@@ -1,29 +1,23 @@
  <!DOCTYPE html>
 <html>
 <head>
-<title>Selection Phases Form</title>
+
 <%@include file="../theme/cdn.jsp" %>
 </head>
-<!-- body  -->
-<body>
- <%@include file="../theme/nav_header.jsp" %>
-<%@include file="../theme/header.jsp" %>
-<div class="container">
 
-	
-		<div class="row">
-			<div class="col-md-3">
-			<%-- 	<%@include file="left-nav.jsp"%>
-			 --%></div>
-		
-			<div class="col-md-9" id="selectionPhaseFormContainer" >
+<body>
+	<div class="row">
+		<div class="col-md-3">
+			<%@include file="../theme/nav_header.jsp"%>
+			<%@include file="../theme/header.jsp"%>
+		</div>
+		<div class="col-md-9">
+			<div class="container">
+			<div  id="selectionPhaseFormContainer"  style="margin-top:8%"></div>
 			</div>
 		</div>
 	</div>
 </body>
-
-
-<!-- json  -->
 
 <script>
 var form = {
@@ -53,7 +47,7 @@ var form = {
 				"type": "javascript",
 				"func": "submitForm(event)",
 				"method": "post",
-				"url": "http://localhost:8080/api/v1/selectionphase"
+				"url": "http://localhost:9098/api/v1/selectionphase"
 			},
 			"cssClass": "btn-primary"
 		}, {
