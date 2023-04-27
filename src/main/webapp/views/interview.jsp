@@ -5,16 +5,18 @@
 </head>
 <!-- body  -->
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-3">
-				<%@include file="../theme/left_side_navigation.jsp"%>
+	<div class="row">
+		<div class="col-md-3">
+			<%@include file="../theme/nav_header.jsp"%>
+			<%@include file="../theme/header.jsp"%>
+		</div>
+		<div class="col-md-9">
+			<div class="container">
+			<div id="interviewForm"  style="margin-top:8%"></div>
 			</div>
-			<div class="col-md-9" id="interviewForm"></div>
 		</div>
 	</div>
 </body>
-
 
 <!-- json  -->
 
@@ -27,8 +29,8 @@ var form = {
 		"fields": [
 			{
 				"type": "select",
-				"name": "candidateName",
-				"label": "CandidateName",
+				"name": "candidateId",
+				"label": "Candidate Name",
 				"required": true,
 				"provider": {
 					"url": "http://localhost:8082/api/v1/city/20600",
@@ -45,8 +47,8 @@ var form = {
 
 			{
 				"type": "select",
-				"name": "interviewerName",
-				"label": "interviewerName",
+				"name": "interviewerId",
+				"label": "Interviewer Name",
 				"required": true,
 				"provider": {
 					"url": "http://localhost:8082/api/v1/city/20600",
@@ -62,7 +64,7 @@ var form = {
 			{
 				"type": "select",
 				"name": "interviewMode",
-				"label": "interviewMode",
+				"label": "Interview Mode",
 				"required": true,
 				"provider": {
 					"url": "http://localhost:8082/api/v1/city/20600",
@@ -130,7 +132,7 @@ var form = {
 			
 			{
 				"type": "text",
-				"name": "Result",
+				"name": "result",
 				"label": "Result",
 				"required": false
 			}
@@ -169,6 +171,7 @@ var form = {
 		}
 	};
 </script>
+<%@include file="../theme/js_scripts.jsp" %>
 <jsp:include page="../template/form-template.jsp">
 	<jsp:param name="formContainerId" value="interviewForm" />
 	<jsp:param name="formId" value="interviewForm" />
