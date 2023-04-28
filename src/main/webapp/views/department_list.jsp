@@ -27,6 +27,14 @@ var form = {
 		"fields": [
 			{
 				"type": "text",
+				"name": "id",
+				
+				"label": "Department Id",
+				"required": true,
+				"placeHolder": "Department Id"
+			},
+			{
+				"type": "text",
 				"name": "department",
 				"label": "Department",
 				"required": true,

@@ -1,24 +1,25 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
-<%@include file="../theme/cdn.jsp" %>
+<%@include file="../theme/cdn.jsp"%>
 </head>
 
 <!-- body  -->
 <body>
- <%@include file="../theme/nav_header.jsp" %>
-<%@include file="../theme/header.jsp" %>
-	
-	<div class="container">
-		<div class="row">
-			<div class="col-md-3">
-			<%-- <%@include file="../theme/nav_header.jsp" %></div> --%>
-			</div>
-	
-			<div class="col-md-9" id="interviewContainer" >
+	<div class="row">
+		<div class="col-md-3">
+			<%@include file="../theme/nav_header.jsp"%>
+			<%@include file="../theme/header.jsp"%>
+		</div>
+		<div class="col-md-9">
+			<div class="container">
+				<div id="interviewContainer" style="margin-top: 8%"></div>
 			</div>
 		</div>
-		</div>
+	</div>
 </body>
 
 <!-- json  -->
@@ -29,8 +30,14 @@ var form = {
 		"title" : "Interviews List",
 		"namespace" : "",
 		"enctype": "multipart/form-data",
-		
 				"fields": [
+					{
+						"type": "text",
+						"name": "id",
+						"label": "Interview Id",
+						"required": true,
+						"placeHolder": "Interview Id"
+					},
 				{
 					"type": "text",
 					"name": "interviewerName",
@@ -95,11 +102,11 @@ var form = {
 		}
 	};
 </script>
-<%@include file="../theme/js_scripts.jsp" %>
+<%@include file="../theme/js_scripts.jsp"%>
 <jsp:include page="../template/list-template.jsp">
-	<jsp:param name="listContainerId" value="interviewContainer"/>
-	<jsp:param name="listId" value="userDataTable"/>
-	<jsp:param name="addPage" value="interviewForm"/>
+	<jsp:param name="listContainerId" value="interviewContainer" />
+	<jsp:param name="listId" value="userDataTable" />
+	<jsp:param name="addPage" value="interviewForm" />
 </jsp:include>
 
 </html>

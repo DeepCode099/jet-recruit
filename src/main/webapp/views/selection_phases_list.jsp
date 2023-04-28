@@ -1,29 +1,23 @@
  <!DOCTYPE html>
 <html>
 <head>
-<title>Selection Phases List</title>
+
 <%@include file="../theme/cdn.jsp" %>
 </head>
-<!-- body  -->
+
 <body>
- <%@include file="../theme/nav_header.jsp" %>
-<%@include file="../theme/header.jsp" %>
-	<div class="container">
-	
-		<div class="row">
-		<%-- <div class="col-md-3">
-		 <%@include file="../theme/nav_header.jsp" %></div> --%>
-		 <div class="col-md-3">
-			<%-- 	<%@include file="left-nav.jsp"%>
-			 --%></div>
-			<div class="col-md-9" id="selectionphaseListContainer" >
+	<div class="row">
+		<div class="col-md-3">
+			<%@include file="../theme/nav_header.jsp"%>
+			<%@include file="../theme/header.jsp"%>
+		</div>
+		<div class="col-md-9">
+			<div class="container">
+			<div  id="selectionphaseListContainer"  style="margin-top:8%"></div>
 			</div>
 		</div>
 	</div>
 </body>
-
-
-<!-- json  -->
 
 <script>
 var form = {

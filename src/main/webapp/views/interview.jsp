@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,16 +6,18 @@
 </head>
 <!-- body  -->
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-3">
-				<%@include file="../theme/left_side_navigation.jsp"%>
+	<div class="row">
+		<div class="col-md-3">
+			<%@include file="../theme/nav_header.jsp"%>
+			<%@include file="../theme/header.jsp"%>
+		</div>
+		<div class="col-md-9">
+			<div class="container">
+			<div id="interviewForm"  style="margin-top:8%"></div>
 			</div>
-			<div class="col-md-9" id="interviewForm"></div>
 		</div>
 	</div>
 </body>
-
 
 <!-- json  -->
 
@@ -27,8 +30,8 @@ var form = {
 		"fields": [
 			{
 				"type": "select",
-				"name": "candidateName",
-				"label": "CandidateName",
+				"name": "candidateId",
+				"label": "Candidate Name",
 				"required": true,
 				"provider": {
 					"url": "http://localhost:8082/api/v1/city/20600",
@@ -45,11 +48,11 @@ var form = {
 
 			{
 				"type": "select",
-				"name": "interviewerName",
-				"label": "interviewerName",
+				"name": "interviewerId",
+				"label": "Interviewer Name",
 				"required": true,
 				"provider": {
-					"url": "http://localhost:8082/api/v1/city/20600",
+					"url": "http://localhost:9097/jet/pis/employee",
 					"value": "id",
 					"label": "name",
 					"params":[
@@ -62,10 +65,10 @@ var form = {
 			{
 				"type": "select",
 				"name": "interviewMode",
-				"label": "interviewMode",
+				"label": "Interview Mode",
 				"required": true,
 				"provider": {
-					"url": "http://localhost:8082/api/v1/city/20600",
+					"url": "https://mocki.io/v1/85a3efe4-fb1e-4e60-8c59-2ffead97bdef",
 					"value": "id",
 					"label": "name",
 					"params":[
@@ -82,28 +85,55 @@ var form = {
 				"label": "InterViewDate",
 				"required": false
 			},
+		  /*  {
+				"type": "group",
+				"name": "nameGroup",
+				"label": "name",
+				"cols": 2,
+				"fields": [
+					{
+						"type": "time",
+						"name": "startTime",
+						"label": "StartTime",
+						"required": true,
+						"provider": {
+							"url": "http://localhost:8082/api/v1/city/20600",
+							"value": "id",
+							"label": "name",
+							"params":[
+								{"name":"startId", "value":"#state"},
+								{"name":"deleted", "value":"0"}
+							]
+
+						}
+					}, {
+						"type": "time",
+						"name": "endTime",
+						"label": "EndTime",
+						"required": true,
+						"provider": {
+							"url": "http://localhost:8082/api/v1/city/20600",
+							"value": "id",
+							"label": "name",
+							"params":[
+								{"name":"stateId", "value":"#state"},
+								{"name":"deleted", "value":"0"}
+							]
+
+						}
+					}]
+			}, 
+ */		
 			{
-				"type" : "time",
-				"name" : "startTime",
-				"label" : "Inteview Start Time",
-				"step" : "2",
-				"required" : true
-			},
-			{
-				"type" : "time",
-				"name" : "endTime",
-				"step" : "2",
-				"label" : "Inteview End Time",
-				"required" : true
-			},{
-				"type": "textarea",
+				"type": "text",
 				"name": "remarks",
 				"label": "Remarks",
 				"required": false
 			}, 
+			
 			{
 				"type": "text",
-				"name": "Result",
+				"name": "result",
 				"label": "Result",
 				"required": false
 			}
@@ -118,7 +148,7 @@ var form = {
 					"type": "javascript",
 					"func": "submitForm(event)",
 					"method": "post",
-					"url": "http://localhost:9099/api/v1/interview"
+					"url": "http://localhost:8082/api/v1/user"
 				},
 				"cssClass": "btn-primary"
 			}, {
@@ -142,6 +172,7 @@ var form = {
 		}
 	};
 </script>
+<%@include file="../theme/js_scripts.jsp" %>
 <jsp:include page="../template/form-template.jsp">
 	<jsp:param name="formContainerId" value="interviewForm" />
 	<jsp:param name="formId" value="interviewForm" />
@@ -152,3 +183,4 @@ var form = {
 
 </script>
 </html>
+
