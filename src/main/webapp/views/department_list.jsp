@@ -28,14 +28,13 @@ var form = {
 			{
 				"type": "text",
 				"name": "id",
-				
 				"label": "Department Id",
 				"required": true,
 				"placeHolder": "Department Id"
 			},
 			{
 				"type": "text",
-				"name": "department",
+				"name": "name",
 				"label": "Department",
 				"required": true,
 				
@@ -72,7 +71,7 @@ var form = {
 			}
 		],
 		"dataProvider":{
-			"collection":{"url":""},
+			"collection":{"url":"http://localhost:9097/jet/pis/department"},
 			"selector":{"url":""}
 		}
 	};

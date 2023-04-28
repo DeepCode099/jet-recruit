@@ -29,7 +29,14 @@ var form = {
 		"fields": [
 			{
 				"type": "text",
-				"name": "selectionphases",
+				"name": "id",
+				"label": "selectionPhase Id",
+				"required": true,
+				"placeHolder": "selectionPhase Id"
+			}
+			,{
+				"type": "text",
+				"name": "name",
 				"label": "SelectionPhases",
 				"required": true,
 				
@@ -66,7 +73,7 @@ var form = {
 			}
 		],
 		"dataProvider":{
-			"collection":{"url":""},
+			"collection":{"url":"http://localhost:9098/api/v1/selectionPhase"},
 			"selector":{"url":""}
 		}
 	};

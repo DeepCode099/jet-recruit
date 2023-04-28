@@ -28,7 +28,14 @@
 		"fields": [
 			{
 				"type": "text",
-				"name": " designation",
+				"name": "id",
+				"label": "Designation Id",
+				"required": true,
+				"placeHolder": "Designation Id"
+			},
+			{
+				"type": "text",
+				"name": "name",
 				"label": "Designation",
 				"required": true,
 				"placeHolder": "Designation"
@@ -65,7 +72,7 @@
 			}
 		],
 		"dataProvider":{
-			"collection":{"url":""},
+			"collection":{"url":"http://localhost:9097/jet/pis/designation"},
 			"selector":{"url":""}
 		}
 	};
