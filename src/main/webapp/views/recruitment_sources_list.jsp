@@ -1,18 +1,19 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-
 <%@include file="../theme/cdn.jsp" %>
 </head>
 
+
 <body>
-	<div class="container">
-	
-		<div class="row">
+	<div class="row">
 		<div class="col-md-3">
-				<%@include file="../theme/left_side_navigation.jsp"%>
-			</div>
-			<div class="col-md-9" id="recruitmentList" >
+			<%@include file="../theme/nav_header.jsp"%>
+			<%@include file="../theme/header.jsp"%>
+		</div>
+		<div class="col-md-9">
+			<div class="container">
+			<div  id="recruitmentList"  style="margin-top:8%"></div>
 			</div>
 		</div>
 	</div>
@@ -28,7 +29,16 @@
 		"fields": [
 			{
 				"type": "text",
-				"name": " recruitmentSourceId",
+				"name": "id",
+				
+				"label": "Recruitment Id",
+				"required": true,
+				"placeHolder": "Recruitment Source"
+			},
+			{
+				"type": "text",
+				"name": "name",
+				
 				"label": "Recruitment Source",
 				"required": true,
 				"placeHolder": "Recruitment Source"
@@ -42,7 +52,7 @@
 					"type": "javascript",
 					"func": "submitForm(event)",
 					"method": "post",
-					"url": "http://localhost:9099/api/v1/recruitementSource"
+					"url": ""
 				},
 				"cssClass": "btn-primary"
 			}, {
@@ -65,12 +75,12 @@
 			}
 		],
 		"dataProvider":{
-			"collection":{"url":""},
+			"collection":{"url":"http://localhost:9098/api/v1/recruitementSource"},
 			"selector":{"url":""}
 		}
 	};
 </script>
-
+<%@include file="../theme/js_scripts.jsp" %>
 <jsp:include page="../template/list-template.jsp">
 	<jsp:param name="listContainerId" value="recruitmentList"/>
 	<jsp:param name="listId" value="userDataTable"/>
@@ -78,3 +88,4 @@
 </jsp:include>
 
 </html>
+

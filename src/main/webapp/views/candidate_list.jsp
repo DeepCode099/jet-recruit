@@ -4,21 +4,21 @@
 <%@include file="../theme/cdn.jsp" %>
 </head>
 
-<!-- body  -->
+
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-3">
-				<%@include file="../theme/left_side_navigation.jsp"%>
-			</div>
-	
-			<div class="col-md-9" id="candidate" >
+	<div class="row">
+		<div class="col-md-3">
+			<%@include file="../theme/nav_header.jsp"%>
+			<%@include file="../theme/header.jsp"%>
+		</div>
+		<div class="col-md-9">
+			<div class="container">
+			<div  id="candidate"  style="margin-top:8%"></div>
 			</div>
 		</div>
 	</div>
 </body>
 
-<!-- json  -->
 
 <script>
 var form = {
@@ -156,6 +156,7 @@ var form = {
 		}
 	};
 </script>
+<%@include file="../theme/js_scripts.jsp" %>
 <jsp:include page="../template/list-template.jsp">
 	<jsp:param name="listContainerId" value="candidate"/>
 	<jsp:param name="listId" value="userDataTable"/>

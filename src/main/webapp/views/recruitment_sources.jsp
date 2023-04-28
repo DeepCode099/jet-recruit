@@ -1,17 +1,19 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 
 <%@include file="../theme/cdn.jsp" %>
 </head>
-<!-- body  -->
+
 <body>
-<div class="container">
-		<div class="row">
+	<div class="row">
 		<div class="col-md-3">
-				<%@include file="../theme/left_side_navigation.jsp"%>
-			</div>
-			<div class="col-md-9" id="recruitmentSourceForm" >
+			<%@include file="../theme/nav_header.jsp"%>
+			<%@include file="../theme/header.jsp"%>
+		</div>
+		<div class="col-md-9">
+			<div class="container">
+			<div  id="recruitmentSourceForm"  style="margin-top:8%"></div>
 			</div>
 		</div>
 	</div>
@@ -25,15 +27,13 @@
 		"enctype": "multipart/form-data",
 		"fields": [ 
 			{
-				"type": "select",
-				"name": "recruitmentSourceId",
+				"type": "text",
+				"name": "name",
 				"label": "Recruitment Source",
-				"provider": {
-					"url": "http://localhost:9099/api/v1/recruitementSource",
-					"value": "id",
-					"label": "name"
-				},
-				"required": true
+				"required": true,
+				"listable":false,
+				"searchable": false
+				
 			}
 		],
 		"actions": [{
@@ -44,8 +44,8 @@
 				"handler": {
 					"type": "javascript",
 					"func": "submitForm(event)",
-					"method": "post",
-					"url": "http://localhost:9099/api/v1/recruitementSource"
+					"method": "POST",
+					"url": "http://localhost:9098/api/v1/recruitementSource"
 				},
 				"cssClass": "btn-primary"
 			}, {
@@ -62,6 +62,7 @@
 		}
 	};
 </script>
+<%@include file="../theme/js_scripts.jsp" %>
 <jsp:include page="../template/form-template.jsp">
 	<jsp:param name="formContainerId" value="recruitmentSourceForm" />
 	 <jsp:param name="formId" value="recruitmentSourceForm" />
@@ -72,3 +73,5 @@
 
 </script>
 </html>  
+
+

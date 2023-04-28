@@ -1,16 +1,18 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-<%@include file="../theme/cdn.jsp" %>
+<%@include file="../theme/cdn.jsp"%>
 </head>
-<!-- body  -->
+
 <body>
-<div class="container">
-		<div class="row">
+	<div class="row">
 		<div class="col-md-3">
-				<%@include file="../theme/left_side_navigation.jsp"%>
-			</div>
-			<div class="col-md-9" id="designation_list" >
+			<%@include file="../theme/nav_header.jsp"%>
+			<%@include file="../theme/header.jsp"%>
+		</div>
+		<div class="col-md-9">
+			<div class="container">
+			<div  id="designation_list"  style="margin-top:8%"></div>
 			</div>
 		</div>
 	</div>
@@ -18,53 +20,57 @@
 
 <script>
 	var form = {
-		"id": "designations",
+		"id" : "designations",
 		"title" : "Designations",
 		"namespace" : "",
-		"enctype": "multipart/form-data",
-		"fields": [ 
-			{
-				"type": "text",
-				"name": "designationId",
-				"label": "Designation",
-				"listable":false,
-				"searchable": false
-				
+		"enctype" : "multipart/form-data",
+		"fields" : [ {
+			"type" : "text",
+			"name" : "name",
+			"label" : "Designations",
+			"listable" : false,
+			"searchable" : false
+
+		} ],
+		"actions" : [ {
+			"name" : "save",
+			"type" : "submit",
+			"label" : "Save",
+			"applyTo" : "form",
+			"handler" : {
+				"type" : "javascript",
+				"func" : "submitForm(event)",
+				"method" : "post",
+				"url" : "http://localhost:9097/jet/pis/designation"
+			},
+			"cssClass" : "btn-primary"
+		}, {
+			"name" : "cancel",
+			"type" : "button",
+			"label" : "Cancel",
+			"applyTo" : "form",
+			"cssClass" : "btn-secondary"
+		} ],
+		"dataProvider" : {
+			"collection" : {
+				"url" : ""
+			},
+			"selector" : {
+				"url" : ""
 			}
-		],
-		"actions": [{
-				"name": "save",
-				"type": "submit",
-				"label": "Save",
-				"applyTo": "form",
-				"handler": {
-					"type": "javascript",
-					"func": "submitForm(event)",
-					"method": "post",
-					"url": "http://localhost:9098/jet/pis/designation"
-				},
-				"cssClass": "btn-primary"
-			}, {
-				"name": "cancel",
-				"type": "button",
-				"label": "Cancel",
-				"applyTo": "form",
-				"cssClass": "btn-secondary"
-			}
-		],
-		"dataProvider":{
-			"collection":{"url":""},
-			"selector":{"url":""}
 		}
 	};
 </script>
+<%@include file="../theme/js_scripts.jsp"%>
 <jsp:include page="../template/form-template.jsp">
 	<jsp:param name="formContainerId" value="designation_list" />
-	 <jsp:param name="formId" value="recruitmentSourceForm" />
-	<jsp:param name="cancelPage" value="designation_list"/>
-	<jsp:param name="successPage" value="designation_list"/>
+	<jsp:param name="formId" value="recruitmentSourceForm" />
+	<jsp:param name="cancelPage" value="designation_list" />
+	<jsp:param name="successPage" value="designation_list" />
 </jsp:include>
 <script>
-
+	
 </script>
-</html>  
+</html>
+
+
