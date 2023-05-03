@@ -13,7 +13,7 @@
 		</div>
 		<div class="col-md-9">
 			<div class="container">
-			<div id="interviewForm"  style="margin-top:8%"></div>
+			<div id="interviewFormContainer"  style="margin-top:8%"></div>
 			</div>
 		</div>
 	</div>
@@ -85,45 +85,29 @@ var form = {
 				"label": "InterViewDate",
 				"required": false
 			},
-		  /*  {
+		   {
 				"type": "group",
 				"name": "nameGroup",
 				"label": "name",
 				"cols": 2,
 				"fields": [
+
 					{
 						"type": "time",
 						"name": "startTime",
-						"label": "StartTime",
-						"required": true,
-						"provider": {
-							"url": "http://localhost:8082/api/v1/city/20600",
-							"value": "id",
-							"label": "name",
-							"params":[
-								{"name":"startId", "value":"#state"},
-								{"name":"deleted", "value":"0"}
-							]
-
-						}
-					}, {
+						"label": "Start Time",
+						"required": false
+				    	}, {
 						"type": "time",
 						"name": "endTime",
-						"label": "EndTime",
+						"label": "End Time",
 						"required": true,
-						"provider": {
-							"url": "http://localhost:8082/api/v1/city/20600",
-							"value": "id",
-							"label": "name",
-							"params":[
-								{"name":"stateId", "value":"#state"},
-								{"name":"deleted", "value":"0"}
-							]
-
-						}
-					}]
+						"placeHolder": "End Time"
+					}
+					
+					]
 			}, 
- */		
+ 	
 			{
 				"type": "text",
 				"name": "remarks",
@@ -174,7 +158,7 @@ var form = {
 </script>
 <%@include file="../theme/js_scripts.jsp" %>
 <jsp:include page="../template/form-template.jsp">
-	<jsp:param name="formContainerId" value="interviewForm" />
+	<jsp:param name="formContainerId" value="interviewFormContainer" />
 	<jsp:param name="formId" value="interviewForm" />
 	<jsp:param name="cancelPage" value="interview_list" />
 	<jsp:param name="successPage" value="interview_list" />

@@ -40,7 +40,7 @@ var form = {
 					},
 				{
 					"type": "text",
-					"name": "interviewerName",
+					"name": "interviewerId",
 					"label": "InterviewerName",
 					"required": true,
 					"placeHolder": "Interviewer Name"
@@ -50,7 +50,7 @@ var form = {
 					"label": "Start Time",
 					"required": false
 			    	}, {
-					"type": "text",
+					"type": "time",
 					"name": "  endTime",
 					"label": "End Time",
 					"required": true,
