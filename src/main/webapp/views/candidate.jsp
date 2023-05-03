@@ -26,7 +26,7 @@
 		"namespace" : "",
 		"enctype": "multipart/form-data",
 		"fields": [
-		{
+			{
 				"type": "group",
 				"name": "nameGroup",
 				"label": "name",
@@ -34,18 +34,18 @@
 				"fields": [
 				{
 					"type": "text",
-					"name": " firstName",
+					"name": "firstName",
 					"label": "First Name",
 					"required": true,
 					"placeHolder": "First Name"
 				}, {
 					"type": "text",
-					"name": "  middleName",
+					"name": "middleName",
 					"label": "Middle Name",
 					"placeHolder": "Middle Name"
 				}, {
 					"type": "text",
-					"name": "  lastName",
+					"name": "lastName",
 					"label": "Last Name",
 					"required": true,
 					"placeHolder": "Last Name"
@@ -71,7 +71,7 @@
 					"required": true
 			},{
 				"type": "select",
-				"name": "recruitmentSourceId",
+				"name": "recruitmentSource",
 				"label": "Recruitment Source",
 				"provider": {
 					"url": "http://localhost:9098/api/v1/recruitementSource",
@@ -83,7 +83,7 @@
 			{
 				"type": "select",
 				"name": "designationId",
-				"label": "Designation ",
+				"label": "Vacancy",
 				"provider": {
 							"url": "http://localhost:9097/jet/pis/designation",
 							"value": "id",
@@ -104,7 +104,7 @@
 			},
 			{
 				"type": "select",
-				"name": "selectionPhaseId",
+				"name": "selectionPhase",
 				"label": "Selection Phase ",
 				"provider": {
 							"url": "http://localhost:9098/api/v1/selectionPhase",
@@ -137,10 +137,10 @@
 				
 		
 			{
-				"type": "file",
+				"type": "text",
 				"name": "resume",
 				"label": "Resume",
-				"accept": "image/png, image/jpeg"
+				
 			}
 		],
 		"actions": [{

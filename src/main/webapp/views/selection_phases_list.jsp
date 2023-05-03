@@ -23,7 +23,7 @@
 var form = {
 		"id": "SelectionPhases",
 		"title" : "SelectionPhases",
-		
+	
 		"namespace" : "",
 		"enctype": "multipart/form-data",
 		"fields": [

@@ -1,18 +1,19 @@
  <!DOCTYPE html>
 <html>
 <head>
-
 <%@include file="../theme/cdn.jsp" %>
 </head>
-<!-- body  -->
+
 <body>
-<div class="container">
-		<div class="row">
+<div class="row">
 		<div class="col-md-3">
-				<%@include file="../theme/left_side_navigation.jsp"%>
-			</div>
-			<div class="col-md-9" id="employeeForm" >
-			</div>
+			<%@include file="../theme/nav_header.jsp"%>
+			<%@include file="../theme/header.jsp"%>
+		</div>
+		<div class="col-md-9">
+		<div class="container">
+			<div  id="employeeForm" style="margin-top:8%"></div>
+		</div>
 		</div>
 	</div>
 </body>
@@ -42,7 +43,7 @@
 					"type": "javascript",
 					"func": "submitForm(event)",
 					"method": "post",
-					"url": ""
+					"url": "http://localhost:9097/jet/pis/employee"
 				},
 				"cssClass": "btn-primary"
 			}, {
@@ -59,6 +60,7 @@
 		}
 	};
 </script>
+<%@include file="../theme/js_scripts.jsp" %>
 <jsp:include page="../template/form-template.jsp">
 	<jsp:param name="formContainerId" value="employeeForm" />
 	 <jsp:param name="formId" value="employeeForm" />

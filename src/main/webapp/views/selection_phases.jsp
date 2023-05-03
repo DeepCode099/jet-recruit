@@ -23,20 +23,16 @@
 	<script>
 	var form = {
 		"id": "selectionphase",
-		"title" : "SelectionPhase",
+		"title" : "Selection Phase",
 		"namespace" : "",
 		"enctype": "multipart/form-data",
 		"fields": [ 
 			{
-				"type": "select",
-				"name": "selectionPhaseId",
-				"label": "Selection Phase ",
-				"provider": {
-							"url": "http://localhost:9099/api/v1/selectionPhase",
-							"value": "id",
-							"label": "name"
-						},
-						"required": true
+				"type": "text",
+				"name": "name",
+				"label": "Selection Phases",
+				"required": true,
+				
 			}
 		],
 		"actions": [{
@@ -48,7 +44,7 @@
 					"type": "javascript",
 					"func": "submitForm(event)",
 					"method": "post",
-					"url": "http://localhost:9098/api/v1/selectionphase"
+					"url": "http://localhost:9098/api/v1/selectionPhase"
 				},
 				"cssClass": "btn-primary"
 			}, {
@@ -69,8 +65,8 @@
 	<jsp:include page="../template/form-template.jsp">
 		<jsp:param name="formContainerId" value="selectionPhaseFormContainer" />
 	    <jsp:param name="formId" value="selectionPhaseForm" />
-	    <jsp:param name="cancelPage" value="selection_phases-list"/>
-		<jsp:param name="successPage" value="selection_phases-list"/>
+	    <jsp:param name="cancelPage" value="selection_phases_list"/>
+		<jsp:param name="successPage" value="selection_phases_list"/>
 	 
 		</jsp:include>
 	<script>

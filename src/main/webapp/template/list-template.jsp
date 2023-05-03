@@ -311,6 +311,7 @@ function renderList() {
         		}]
         	
         	});
+        	console.log(table);
         },
         error: function(error) {
             alert('Error in fetching data');

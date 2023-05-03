@@ -64,9 +64,9 @@ public class RecruitmentController {
 		return "interview_list";
 		
 	}
-	@RequestMapping("/interviewForm")
+	@RequestMapping("/interview")
 	public String interviewForm() {
-		System.out.println("InterviewList");
+		System.out.println("Interview");
 		return "interview";
 		
 	}
@@ -90,13 +90,24 @@ public class RecruitmentController {
 		return "employee";
 		
 	}
-	@RequestMapping("/employeeForm")
+	@RequestMapping("/employee_list")
 	public String employeeList() {
-		System.out.println("department");
+		System.out.println("employeeForm");
 		return "employee_list";
 		
 	}
-	
+	@RequestMapping("/vacancy_list")
+	public String vacancyList() {
+		System.out.println("vacancy_list");
+		return "vacancy_list";
+		
+	}
+	@RequestMapping("/vacancy")
+	public String vacancy() {
+		System.out.println("vacancy");
+		return "vacancy";
+		
+	}
 	
 	
 }

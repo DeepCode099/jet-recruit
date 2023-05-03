@@ -27,7 +27,7 @@
 <script>
 var form = {
 		"id": "interviewForm",
-		"title" : "Interviews List",
+		"title" : "Interviews",
 		"namespace" : "",
 		"enctype": "multipart/form-data",
 				"fields": [
@@ -38,26 +38,33 @@ var form = {
 						"required": true,
 						"placeHolder": "Interview Id"
 					},
+					{
+						"type": "text",
+						"name": "interviewerName",
+						"label": "InterviewerName",
+						"required": true,
+						"placeHolder": "Interviewer Name"
+					},
+					{
+						"type": "date",
+						"name": "interviewDate",
+						"label": "InterViewDate",
+						"required": false
+					},
 				{
-					"type": "text",
-					"name": "interviewerId",
-					"label": "InterviewerName",
-					"required": true,
-					"placeHolder": "Interviewer Name"
-				},{
 					"type": "time",
 					"name": "  startTime",
 					"label": "Start Time",
 					"required": false
-			    	}, {
-					"type": "time",
+			    }, 
+			    {
+					"type": "text",
 					"name": "  endTime",
 					"label": "End Time",
 					"required": true,
 					"placeHolder": "End Time"
 				},	
-			   
-			  {
+			    {
 				"type": "text",
 				"name": "remarks",
 				"label": "Remarks",
@@ -69,6 +76,7 @@ var form = {
 					"label": "Result",
 					"required": true
 			    }],
+	
 		"actions": [{
 				"name": "save",
 				"type": "submit",
@@ -78,7 +86,7 @@ var form = {
 					"type": "javascript",
 					"func": "submitForm(event)",
 					"method": "post",
-					"url": "http://localhost:8082/api/v1/user"
+					"url": ""
 				},
 				"cssClass": "btn-primary"
 			}, {
@@ -94,10 +102,9 @@ var form = {
 				"label": "Add Interview",
 				"applyTo": "list",
 				"cssClass": "btn-danger"
-			}
-		],
+			}],
 		"dataProvider":{
-			"collection":{"url":""},
+			"collection":{"url":"http://localhost:9098/api/v1/interview"},
 			"selector":{"url":""}
 		}
 	};
@@ -106,7 +113,7 @@ var form = {
 <jsp:include page="../template/list-template.jsp">
 	<jsp:param name="listContainerId" value="interviewContainer" />
 	<jsp:param name="listId" value="userDataTable" />
-	<jsp:param name="addPage" value="interviewForm" />
+	<jsp:param name="addPage" value="interview" />
 </jsp:include>
 
 </html>

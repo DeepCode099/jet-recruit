@@ -25,15 +25,15 @@ var form = {
 		"id": "candiateForm",
 		"title" : "Candidate Form",
 		"namespace" : "",
-		"enctype": "multipart/form-data",
 		"fields": [
-		{
-				"type": "group",
-				"name": "nameGroup",
-				"label": "name",
-				"cols": 3,
-				"fields": [
 				{
+					"type": "text",
+					"name": "id",
+					"label": "Candidate Id",
+					"placeHolder": "Candidate Id"
+				},
+				{
+				
 					"type": "text",
 					"name": " firstName",
 					"label": "First Name",
@@ -50,8 +50,8 @@ var form = {
 					"label": "Last Name",
 					"required": true,
 					"placeHolder": "Last Name"
-				}]
-			}, 
+				
+				}, 
 		
 			{
 				"type": "date",
@@ -151,7 +151,7 @@ var form = {
 			}
 		],
 		"dataProvider":{
-			"collection":{"url":""},
+			"collection":{"url":"http://localhost:9098/api/v1/candidate"},
 			"selector":{"url":""}
 		}
 	};
