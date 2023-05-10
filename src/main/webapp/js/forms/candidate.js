@@ -51,17 +51,17 @@
 					"name": "departmentId",
 					"label": "Department",
 					"provider": {
-						"url": "http://localhost:9097/jet/pis/department",
+						"ajax": "http://localhost:9097/jet/pis/department",
 						"value": "id",
 						"label": "name"
 					},
 					"required": true
 			},{
 				"type": "select",
-				"name": "recruitmentSource",
+				"name": "recruitmentSourceId",
 				"label": "Recruitment Source",
 				"provider": {
-					"url": "http://localhost:9098/api/v1/recruitementSource",
+					"ajax": "http://localhost:9098/api/v1/recruitementSource",
 					"value": "id",
 					"label": "name"
 				},
@@ -72,7 +72,7 @@
 				"name": "designationId",
 				"label": "Vacancy",
 				"provider": {
-							"url": "http://localhost:9097/jet/pis/designation",
+							"ajax": "http://localhost:9097/jet/pis/designation",
 							"value": "id",
 							"label": "name"
 						},
@@ -83,7 +83,7 @@
 				"name": "recruiterId",
 				"label": "recruiter ",
 				"provider": {
-							"url": "http://localhost:9097/jet/pis/employee",
+							"ajax": "http://localhost:9097/jet/pis/employee",
 							"value": "id",
 							"label": "name"
 						},
@@ -91,10 +91,10 @@
 			},
 			{
 				"type": "select",
-				"name": "selectionPhase",
+				"name": "selectionPhaseId",
 				"label": "Selection Phase ",
 				"provider": {
-							"url": "http://localhost:9098/api/v1/selectionPhase",
+							"ajax": "http://localhost:9098/api/v1/selectionPhase",
 							"value": "id",
 							"label": "name"
 						},

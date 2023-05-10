@@ -96,7 +96,8 @@ var department = {
 			"queryParams":{},
 			"requestParams":{}
 		},
-			"ajax": "http://localhost:9097/jet/pis/department",
+			"update": {
+			"ajax": "http://localhost:9097/jet/pis/employee",
 			"method": "put",
 			
 		},
@@ -106,5 +107,6 @@ var department = {
 				"requestParams":{"id":"{id}"}
 		}
 	}
+	};
 
  

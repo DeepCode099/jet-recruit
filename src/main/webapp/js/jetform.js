@@ -1,6 +1,7 @@
 const templates = {            //object for mapping object to id
     text: '#jf-text-template',
-     hidden:'#jf-hidden-template',
+    hidden:'#jf-hidden-template',
+	textarea :'#jf-textarea-template',
     date: '#jf-date-template',
     submit: '#jf-button-template',
     email: '#jf-email-template',
@@ -258,7 +259,7 @@ JetForm.prototype.loadOptionsField = function(field) {
     }
 }
 
-JetForm.prototype.populateOptions = function(field, data){
+JetForm.prototype.populateOptions = function(field, action ,data){
 	
 	var provider = field.provider;
 	var select=(field.type == "select");
@@ -614,7 +615,7 @@ JetForm.prototype.bindEventReceivers = function(eventSource, receivers){
 JetForm.prototype.refillField = function(fieldName){
 	var _this = this;
 	var field=_this.findFieldByName(fieldName);
-	_this.fillFieldOptions(field);
+	_this.loadOptionsField(field);
 }
 
 JetForm.prototype.bindValidations = function(){
@@ -955,11 +956,24 @@ JetList.prototype.renderList = function() {
         	var columns=[];
         	var ctr=0;
         	columns[ctr++]= { "title":''};
-        	form.fields.forEach(field => {
-        		if(field.type!='hidden'){
-        			columns[ctr++]= { "data": field.name, "title":field.label};
-        		}
-        	});
+			form.fields.forEach(field => {
+				if(field.type!='group'){
+					if(field.type!='hidden'){
+						columns[ctr++]= { "data": field.name, "title":field.label};
+					}
+				}else{
+					field.fields.forEach(grpfield => {
+						if(field.type!='hidden'){
+							columns[ctr++]= { "data": grpfield.name, "title":grpfield.label};
+						}
+					});
+				}
+		   });
+        	// form.fields.forEach(field => {
+        	// 	if(field.type!='hidden'){
+        	// 		columns[ctr++]= { "data": field.name, "title":field.label};
+        	// 	}
+        	// });
         	
         	var data;
         	
@@ -1010,7 +1024,6 @@ JetList.prototype.renderRowActions = function(data) {
 	var idField = findIdField(form);
 	if(form.actions.length>0){
     	form.actions.forEach(action => {
-			
 			action['formId']=form.id;
 			//action['dataKey']="{'"+idField.name+"':"+"'"+data[idField.name]+"'}";
 			action['dataKey']=data[idField.name];
