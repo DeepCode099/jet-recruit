@@ -17,9 +17,8 @@ var recruitmentSources = {
 			"type": "text",
 			"name": "name",
 			"label": "Recuitment Sources",
-			"id": true,
 			"required": true,
-			"placeHolder": "Enter Recuitment Sources Name",
+			"placeHolder": "Enter Recuitment Sources Name"
 		}],
 				
 		"actions": [{

@@ -17,9 +17,8 @@ var employee = {
 			"type": "text",
 			"name": "name",
 			"label": "Employee",
-			"id": true,
 			"required": true,
-			"placeHolder": "Enter Employee Name",
+			"placeHolder": "Enter Employee Name"
 		}],
 				
 		"actions": [{

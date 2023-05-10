@@ -27,6 +27,8 @@
 <script>
 	$(document).ready(() => {
 		var jetform=JetForm({"id":"designation", "parentId":"designationContainer", "form":designation});
+		jetform.form.providers.selector.pathParams={"id":"<%=request.getParameter("id")%>"};
+		
 		jetform.render();
 	});
 </script>

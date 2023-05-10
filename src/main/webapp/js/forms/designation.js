@@ -18,7 +18,6 @@ var designation = {
 			"type": "text",
 			"name": "name",
 			"label": "Designation",
-			"id": true,
 			"required": true,
 			"placeHolder": "Enter Designation Name",
 		}],
@@ -104,7 +103,7 @@ var designation = {
 		"delete": {
 			"ajax": "http://localhost:9097/jet/pis/designation",
 			"method": "delete",
-				"requestParams":{"id":"{id}"}
+			"requestParams":{"id":"{id}"}
 		}
 	}
 };

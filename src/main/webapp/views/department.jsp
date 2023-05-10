@@ -39,5 +39,6 @@
 	});
 </script>
 <%@include file="../theme/js_scripts.jsp" %>
-<jsp:include page="../template/jetform-template.jsp"/>
+	<jsp:include page="../template/jetform-template.jsp"/>
+
 </html> 

@@ -17,9 +17,8 @@ var selectionPhase = {
 			"type": "text",
 			"name": "name",
 			"label": "Selection Phase",
-			"id": true,
 			"required": true,
-			"placeHolder": "Enter Selection Phase Name",
+			"placeHolder": "Enter Selection Phase Name"
 		}],
 				
 		"actions": [{

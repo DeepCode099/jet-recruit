@@ -12,7 +12,7 @@
 			"id": true,
 			"required": true
 			
-		},
+			},
 			{
 				"type": "group",
 				"name": "nameGroup",
@@ -211,7 +211,7 @@
 		"delete": {
 			"ajax": "http://localhost:9098/api/v1/candidate",
 			"method": "delete",
-				"requestParams":{"id":"{id}"}
+			"requestParams":{"id":"{id}"}
 		}
 	}
 };
