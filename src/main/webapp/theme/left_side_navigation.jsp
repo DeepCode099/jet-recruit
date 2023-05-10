@@ -33,7 +33,7 @@
 						<span class="nav-text">Recruitment Tracker</span>
 						</a>
 						<ul aria-expanded="false" class="mm-collapse mm-show left" style="">
-							<li class="mm-active"><a href="recruitmentSources" class="mm-active">Recruitment Sources</a></li>
+							<li class="mm-active"><a href="recruitment_sources_list" class="mm-active">Recruitment Sources</a></li>
 							<li><a href="designation_list">Designation</a></li>
 							<li class="mm-active"><a href="candidate_list">Candidate</a></li>
 							<li><a href="selection_phases_list">Selection Phase</a></li>

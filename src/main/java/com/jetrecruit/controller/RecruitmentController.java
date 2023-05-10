@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class RecruitmentController {
-	@RequestMapping("/recruitmentSources")
+	@RequestMapping("/recruitment_sources_list")
 	public String recruitmentSourcesList() {
 		System.out.println("recruitmentSources");
 		return "recruitment_sources_list";

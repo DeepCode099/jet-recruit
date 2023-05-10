@@ -1,7 +1,10 @@
  <!DOCTYPE html>
 <html>
 <head>
+<title>Employee Form</title>
 <%@include file="../theme/cdn.jsp" %>
+<script type="text/javascript" src="../js/forms/employee.js"></script>
+
 </head>
 
 <body>
@@ -11,76 +14,21 @@
 			<%@include file="../theme/header.jsp"%>
 		</div>
 		<div class="col-md-9">
-		<div class="container">
-			<div id="employeeList" style="margin-top:8%"></div>
+			<div class="container">
+				<div id="employeeContainer" style="margin-top: 8%"></div>
+			</div>
 		</div>
-	</div>
-	</div>
+		</div>
+	
 </body>
 
+
 <script>
-	var form = {
-		"id": "employee",
-		"title" : "Employee",
-		"namespace" : "",
-		"enctype": "multipart/form-data",
-		"fields": [
-			{
-				"type": "text",
-				"name": "id",
-				"label": "Employee Id",
-				"required": true,
-				"placeHolder": "Employee Id"
-			},
-			{
-				"type": "text",
-				"name": "name",
-				"label": "Employee",
-				"required": true,
-				"placeHolder": "Employee"
-			}],
-		"actions": [{
-				"name": "save",
-				"type": "submit",
-				"label": "Save",
-				"applyTo": "form",
-				"handler": {
-					"type": "javascript",
-					"func": "submitForm(event)",
-					"method": "post",
-					"url": "http://localhost:9098/jet/pis/employee"
-				},
-				"cssClass": "btn-primary"
-			}, {
-				"name": "cancel",
-				"type": "button",
-				"label": "Cancel",
-				"applyTo": "form",
-				"handler": {
-					"type": "javascript",
-					"func": "alert('ok');"
-				},
-				"cssClass": "btn-secondary"
-			},
-			{
-				"name": "add",
-				"type": "button",
-				"label": "Add Employee",
-				"applyTo": "list",
-				"cssClass": "btn-danger"
-			}
-		],
-		"dataProvider":{
-			"collection":{"url":"http://localhost:9098/jet/pis/employee"},
-			"selector":{"url":""}
-		}
-	};
+	$(document).ready(() => {
+		var jetList=JetList({"id":"employee", "parentId":"employeeContainer", "form":employee});
+		jetList.render();
+	});
 </script>
 <%@include file="../theme/js_scripts.jsp" %>
-<jsp:include page="../template/list-template.jsp">
-	<jsp:param name="listContainerId" value="employeeList"/>
-	<jsp:param name="listId" value="userDataTable"/>
-	<jsp:param name="addPage" value="employee"/>
-</jsp:include>
-
-</html>
+<jsp:include page="../template/jetform-template.jsp"/>
+</html> 

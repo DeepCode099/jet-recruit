@@ -1,8 +1,10 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
 
 <%@include file="../theme/cdn.jsp" %>
+<script type="text/javascript" src="../js/forms/recruitment-sources.js"></script>
+
 </head>
 
 <body>
@@ -12,66 +14,28 @@
 			<%@include file="../theme/header.jsp"%>
 		</div>
 		<div class="col-md-9">
+			
 			<div class="container">
-			<div  id="recruitmentSourceForm"  style="margin-top:8%"></div>
+				<div class="row">
+					<div class="col" id="recruitmentSourcesContainer" style="margin-top: 8%">
+						<h3>Recruitment Sources Form</h3>
+						<form id="recruitmentSources"></form>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
+		</div>
+	
 </body>
 
+
+
 <script>
-	var form = {
-		"id": "recruitmentSource",
-		"title" : "Recruitment Source",
-		"namespace" : "",
-		"enctype": "multipart/form-data",
-		"fields": [ 
-			{
-				"type": "text",
-				"name": "name",
-				"label": "Recruitment Source",
-				"required": true,
-				"listable":false,
-				"searchable": false
-				
-			}
-		],
-		"actions": [{
-				"name": "save",
-				"type": "submit",
-				"label": "Save",
-				"applyTo": "form",
-				"handler": {
-					"type": "javascript",
-					"func": "submitForm(event)",
-					"method": "POST",
-					"url": "http://localhost:9098/api/v1/recruitementSource"
-				},
-				"cssClass": "btn-primary"
-			}, {
-				"name": "cancel",
-				"type": "button",
-				"label": "Cancel",
-				"applyTo": "form",
-				"cssClass": "btn-secondary"
-			}
-		],
-		"dataProvider":{
-			"collection":{"url":""},
-			"selector":{"url":""}
-		}
-	};
+	$(document).ready(() => {
+		var jetform=JetForm({"id":"recruitmentSources", "parentId":"recruitmentSourcesContainer", "form":recruitmentSources});
+		jetform.render();
+	});
 </script>
 <%@include file="../theme/js_scripts.jsp" %>
-<jsp:include page="../template/form-template.jsp">
-	<jsp:param name="formContainerId" value="recruitmentSourceForm" />
-	 <jsp:param name="formId" value="recruitmentSourceForm" />
-	<jsp:param name="cancelPage" value="recruitmentSources"/>
-	<jsp:param name="successPage" value="recruitmentSources"/>
-</jsp:include>
-<script>
-
-</script>
-</html>  
-
-
+<jsp:include page="../template/jetform-template.jsp"/>
+</html> 
