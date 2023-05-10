@@ -42,17 +42,17 @@ var selectionPhase = {
 			"applyTo": "form",
 			"cssClass": "btn-secondary",
 			"redirects": {
-				"success": {"href":"department"},
+				"success": {"href":"selection_phases"},
 			}
 		},
 		{
 			"name": "add",
 			"type": "button",
-			"label": "Add Department",
+			"label": "Add Selection Phase",
 			"applyTo": "list",
 			"cssClass": "btn-danger",
 			"handler": {
-				"href": "department"
+				"href": "selection_phases"
 			}
 		},
 		{
@@ -62,7 +62,7 @@ var selectionPhase = {
 			"applyTo": "row",
 			"cssClass": "btn-danger",
 			"handler": {
-				"href": "selection_phases_list"
+				"href": "selection_phases"
 			}
 		},
 		{
@@ -78,7 +78,7 @@ var selectionPhase = {
 	],
 	"providers": {
 		"collection": {
-			"ajax": "http://localhost:9097/jet/pis/department",
+			"ajax": "http://localhost:9098/api/v1/selectionPhase",
 			"method": "get",
 		},
 		"selector": {
@@ -89,19 +89,19 @@ var selectionPhase = {
 
 		},
 		"create": {
-			"ajax": "http://localhost:9097/jet/pis/department",
+			"ajax": "http://localhost:9098/api/v1/selectionPhase",
 			"method": "post",
 			"pathParams":{},
 			"queryParams":{},
 			"requestParams":{}
 		},
 		"update": {
-			"ajax": "http://localhost:9097/jet/pis/department",
+			"ajax": "http://localhost:9098/api/v1/selectionPhase",
 			"method": "put",
 			
 		},
 		"delete": {
-			"ajax": "http://localhost:9097/jet/pis/department",
+			"ajax": "http://localhost:9098/api/v1/selectionPhase",
 			"method": "delete",
 			"requestParams":{"id":"{id}"}
 		}
