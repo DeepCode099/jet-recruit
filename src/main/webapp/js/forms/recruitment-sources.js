@@ -81,9 +81,9 @@ var recruitmentSources = {
 			"method": "get",
 		},
 		"selector": {
-			"ajax": "",
+			"ajax": "http://localhost:9098/api/v1/recruitementSource/{id}",
 			"method": "get",
-			"pathParams":{},
+			"pathParams":{"id":"#id"},
 			"queryParams":{}
 
 		},
@@ -96,13 +96,13 @@ var recruitmentSources = {
 		},
 		"update": {
 			"ajax": "http://localhost:9098/api/v1/recruitementSource",
-			"method": "put",
+			"method": "put"
 			
 		},
 		"delete": {
 			"ajax": "http://localhost:9098/api/v1/recruitementSource",
-			"method": "delete",
-			"requestParams":{"id":"{id}"}
+			"method": "delete"
+			
 		}
 	}
 };

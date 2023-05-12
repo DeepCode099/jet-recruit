@@ -19,9 +19,7 @@ var department = {
 			"label": "Department",
 			"required": true,
 			"placeHolder": "Enter Department Name"
-		}
-		
-		],
+		}],
 				
 		"actions": [{
 			"name": "save",
@@ -80,12 +78,13 @@ var department = {
 	"providers": {
 		"collection": {
 			"ajax": "http://localhost:9097/jet/pis/department",
-			"method": "get",
+			"method": "get"
+			
 		},
 		"selector": {
-			"ajax": "",
+			"ajax": "http://localhost:9097/jet/pis/department/{id}",
 			"method": "get",
-			"pathParams":{},
+			"requestParams":{"id":"#id"},
 			"queryParams":{}
 
 		},
@@ -97,14 +96,13 @@ var department = {
 			"requestParams":{}
 		},
 			"update": {
-			"ajax": "http://localhost:9097/jet/pis/employee",
+			"ajax": "http://localhost:9097/jet/pis/department",
 			"method": "put",
 			
 		},
 		"delete": {
 			"ajax": "http://localhost:9097/jet/pis/department",
-			"method": "delete",
-				"requestParams":{"id":"{id}"}
+			"method": "delete"
 		}
 	}
 	};

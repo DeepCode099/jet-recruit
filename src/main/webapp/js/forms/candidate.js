@@ -14,12 +14,7 @@
 			
 			},
 			{
-				"type": "group",
-				"name": "nameGroup",
-				"label": "name",
-				"cols": 3,
-				"fields": [
-				{
+			
 					"type": "text",
 					"name": "firstName",
 					"label": "First Name",
@@ -36,8 +31,8 @@
 					"label": "Last Name",
 					"required": true,
 					"placeHolder": "Last Name"
-				}]
-			}, 
+				},
+			
 		
 			{
 				"type": "date",
@@ -118,7 +113,7 @@
 				"type": "number",
 				"name": "mobile",
 				"label": "Mobile",
-				"required": true,
+				
 				"placeHolder": "Mobile"
 			},
 				
@@ -187,12 +182,12 @@
 	"providers": {
 		"collection": {
 			"ajax": "http://localhost:9098/api/v1/candidate",
-			"method": "get",
+			"method": "get"
 		},
 		"selector": {
-			"ajax": "",
+			"ajax": "http://localhost:9098/api/v1/candidate/{id}",
 			"method": "get",
-			"pathParams":{},
+			"pathParams":{"id":"#id"},
 			"queryParams":{}
 
 		},
@@ -210,8 +205,7 @@
 		},
 		"delete": {
 			"ajax": "http://localhost:9098/api/v1/candidate",
-			"method": "delete",
-			"requestParams":{"id":"{id}"}
+			"method": "delete"
 		}
 	}
 };

@@ -18,7 +18,6 @@
 			<div class="container">
 				<div class="row">
 					<div class="col" id="employeeContainer" style="margin-top: 8%">
-						<h3>Employee</h3>
 						<form id="employee"></form>
 					</div>
 				</div>
@@ -31,8 +30,11 @@
 
 
 <script>
+	var id="<%=request.getParameter("id")!=null? request.getParameter("id"):""%>";
+	console.log("id"+id);
 	$(document).ready(() => {
 		var jetform=JetForm({"id":"employee", "parentId":"employeeContainer", "form":employee});
+		jetform.setDataKey(id);
 		jetform.render();
 	});
 </script>

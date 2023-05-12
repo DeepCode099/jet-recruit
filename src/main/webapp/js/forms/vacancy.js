@@ -52,7 +52,7 @@ var vacancyForm = {
 						"type": "number",
 						"name": "noOfVacancy",
 						"label": "NoOfVacancy",
-						"required": true,
+						"required": false,
 						"placeHolder": "NoOfVacancy"
 					},
 					{
@@ -121,14 +121,13 @@ var vacancyForm = {
 						"type": "number",
 						"name": "minimumHiringCost",
 						"label": "Minimum Hiring Cost",
-						"required": true,
+						
 						"placeHolder": "Enter Minimum Hiring Cost"
 					},
 					{
 						"type": "number",
 						"name": "Maximum Hiring Cost",
 						"label": "Maximum Hiring Cost",
-						"required": true,
 						"placeHolder": "Enter Maximum Hiring Cost"
 					}],
 					
@@ -163,6 +162,9 @@ var vacancyForm = {
 						"cssClass": "btn-danger",
 						"handler": {
 							"href": "vacancy"
+						},
+						"redirects": {
+							"success": {"href":"vacancy_list"},
 						}
 					},
 					{
@@ -173,6 +175,9 @@ var vacancyForm = {
 						"cssClass": "btn-danger",
 						"handler": {
 							"href": "vacancy"
+						},
+						"redirects": {
+							"success": {"href":"vacancy_list"},
 						}
 					},
 					{
@@ -189,12 +194,12 @@ var vacancyForm = {
 				"providers": {
 					"collection": {
 						"ajax": "http://localhost:9098/api/v1/vacancy",
-						"method": "get",
+						"method": "get"
 					},
 					"selector": {
-						"ajax": "",
+						"ajax": "http://localhost:9098/api/v1/vacancy/{id}",
 						"method": "get",
-						"pathParams":{},
+						"pathParams":{"id":"#id"},
 						"queryParams":{}
 
 					},
@@ -212,8 +217,7 @@ var vacancyForm = {
 					},
 					"delete": {
 						"ajax": "http://localhost:9098/api/v1/vacancy",
-						"method": "delete",
-						"requestParams":{"id":"{id}"}
+						"method": "delete"
 					}
 				}
 

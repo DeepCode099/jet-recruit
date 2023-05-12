@@ -31,10 +31,11 @@
 
 
 <script>
+   var id="<%=request.getParameter("id")!=null? request.getParameter("id"):""%>";
+   console.log("id"+id);
 	$(document).ready(() => {
 		var jetform=JetForm({"id":"department", "parentId":"departmentContainer", "form":department});
-		jetform.form.providers.selector.pathParams={"id":"<%=request.getParameter("id")%>"};
-		
+		jetform.setDataKey(id);
 		jetform.render();
 	});
 </script>

@@ -15,7 +15,6 @@
 			<div class="container">
 				<div class="row">
 					<div class="col" id="vacancyContainer" style="margin-top: 8%">
-						<h3>Vacancy</h3>
 						<form id="vacancyForm"></form>
 					</div>
 				</div>
@@ -26,10 +25,11 @@
 </body>
 
 <script>
+	var id="<%=request.getParameter("id")!=null? request.getParameter("id"):""%>";
+	console.log("id"+id);
 	$(document).ready(() => {
 		var jetform=JetForm({"id":"vacancyForm", "parentId":"vacancyContainer", "form":vacancyForm});
-		jetform.form.providers.selector.pathParams={"id":"<%=request.getParameter("id")%>"};
-		
+		jetform.setDataKey(id);
 		jetform.render();
 	});
 </script>

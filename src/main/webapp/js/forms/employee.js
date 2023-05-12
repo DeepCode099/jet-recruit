@@ -61,7 +61,7 @@ var employee = {
 			"applyTo": "row",
 			"cssClass": "btn-danger",
 			"handler": {
-				"href": "employee_list"
+				"href": "employee"
 			}
 		},
 		{
@@ -78,12 +78,12 @@ var employee = {
 	"providers": {
 		"collection": {
 			"ajax": "http://localhost:9097/jet/pis/employee",
-			"method": "get",
+			"method": "get"
 		},
 		"selector": {
-			"ajax": "",
+			"ajax": "http://localhost:9097/jet/pis/employee/{id}",
 			"method": "get",
-			"pathParams":{},
+			"pathParams":{"id":"#id"},
 			"queryParams":{}
 
 		},
@@ -96,13 +96,13 @@ var employee = {
 		},
 		"update": {
 			"ajax": "http://localhost:9097/jet/pis/employee",
-			"method": "put",
+			"method": "put"
 			
 		},
 		"delete": {
 			"ajax": "http://localhost:9097/jet/pis/employee",
 			"method": "delete",
-				"requestParams":{"id":"{id}"}
+				
 		}
 	}
 };

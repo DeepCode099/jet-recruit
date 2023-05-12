@@ -20,6 +20,8 @@
 <!-- Style css -->
 <link href="theme/css/style.css" rel="stylesheet">
 
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script

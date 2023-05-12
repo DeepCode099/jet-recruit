@@ -31,8 +31,11 @@
 
 
 <script>
+	var id="<%=request.getParameter("id")!=null? request.getParameter("id"):""%>";
+	console.log("id"+id);
 	$(document).ready(() => {
 		var jetform=JetForm({"id":"recruitmentSources", "parentId":"recruitmentSourcesContainer", "form":recruitmentSources});
+		jetform.setDataKey(id);
 		jetform.render();
 	});
 </script>

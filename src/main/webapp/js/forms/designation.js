@@ -62,7 +62,7 @@ var designation = {
 			"applyTo": "row",
 			"cssClass": "btn-danger",
 			"handler": {
-				"href": "designation_list"
+				"href": "designation"
 			}
 		},
 		{
@@ -79,12 +79,12 @@ var designation = {
 	"providers": {
 		"collection": {
 			"ajax": "http://localhost:9097/jet/pis/designation",
-			"method": "get",
+			"method": "get"
 		},
 		"selector": {
-			"ajax": "",
+			"ajax": "http://localhost:9097/jet/pis/designation/{id}",
 			"method": "get",
-			"pathParams":{},
+			"requestParams":{"id":"#id"},
 			"queryParams":{}
 
 		},
@@ -97,13 +97,12 @@ var designation = {
 		},
 		"update": {
 			"ajax": "http://localhost:9097/jet/pis/designation",
-			"method": "put",
+			"method": "put"
 			
 		},
 		"delete": {
 			"ajax": "http://localhost:9097/jet/pis/designation",
-			"method": "delete",
-			"requestParams":{"id":"{id}"}
+			"method": "delete"
 		}
 	}
 };

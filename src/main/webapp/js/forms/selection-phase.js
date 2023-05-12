@@ -62,6 +62,9 @@ var selectionPhase = {
 			"cssClass": "btn-danger",
 			"handler": {
 				"href": "selection_phases"
+			},
+			"redirects": {
+				"success": {"href":"selection_phases_list"},
 			}
 		},
 		{
@@ -78,12 +81,12 @@ var selectionPhase = {
 	"providers": {
 		"collection": {
 			"ajax": "http://localhost:9098/api/v1/selectionPhase",
-			"method": "get",
+			"method": "get"
 		},
 		"selector": {
-			"ajax": "",
+			"ajax": "http://localhost:9098/api/v1/selectionPhase/{id}",
 			"method": "get",
-			"pathParams":{},
+			"pathParams":{"id":"#id"},
 			"queryParams":{}
 
 		},
@@ -96,13 +99,13 @@ var selectionPhase = {
 		},
 		"update": {
 			"ajax": "http://localhost:9098/api/v1/selectionPhase",
-			"method": "put",
+			"method": "put"
 			
 		},
 		"delete": {
 			"ajax": "http://localhost:9098/api/v1/selectionPhase",
-			"method": "delete",
-			"requestParams":{"id":"{id}"}
+			"method": "delete"
+			
 		}
 	}
 };
