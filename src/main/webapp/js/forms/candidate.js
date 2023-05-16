@@ -113,7 +113,6 @@
 				"type": "number",
 				"name": "mobile",
 				"label": "Mobile",
-				
 				"placeHolder": "Mobile"
 			},
 				
@@ -181,14 +180,12 @@
 	],
 	"providers": {
 		"collection": {
-			"ajax": "http://localhost:9098/api/v1/candidate",
-			"method": "get"
+			"ajax": "http://localhost:9098/api/v1/candidate"
+			
 		},
 		"selector": {
 			"ajax": "http://localhost:9098/api/v1/candidate/{id}",
-			"method": "get",
-			"pathParams":{"id":"#id"},
-			"queryParams":{}
+			
 
 		},
 		"create": {
@@ -200,7 +197,7 @@
 		},
 		"update": {
 			"ajax": "http://localhost:9098/api/v1/candidate",
-			"method": "put",
+			"method": "put"
 			
 		},
 		"delete": {

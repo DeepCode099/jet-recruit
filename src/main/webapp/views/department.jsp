@@ -18,7 +18,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col" id="departmentContainer" style="margin-top: 8%">
-						<h3>Department</h3>
+					
 						<form id="department"></form>
 					</div>
 				</div>
