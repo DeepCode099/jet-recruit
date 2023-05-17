@@ -11,36 +11,55 @@
 			"name": "id",
 			"id": true,
 			"required": true
-			
+			},
+		{
+			"type": "group",
+			"name": "fullName",
+			"label": "name",
+			"cols": 12,
+			  "fields": [
+		    {
+				"type": "text",
+				"name": "firstName",
+				"label": "First Name",
+				"required": true,
+				"placeHolder": "First Name",
+				"col":4
+			},
+	        {
+				"type": "text",
+				"name": "middleName",
+				"label": "Middle Name",
+				"placeHolder": "Middle Name",
+				"col":4
 			},
 			{
-			
-					"type": "text",
-					"name": "firstName",
-					"label": "First Name",
-					"required": true,
-					"placeHolder": "First Name"
-				}, {
-					"type": "text",
-					"name": "middleName",
-					"label": "Middle Name",
-					"placeHolder": "Middle Name"
-				}, {
-					"type": "text",
-					"name": "lastName",
-					"label": "Last Name",
-					"required": true,
-					"placeHolder": "Last Name"
-				},
-			
+				"type": "text",
+				"name": "lastName",
+				"label": "Last Name",
+				"required": true,
+				"placeHolder": "Last Name",
+				"col":4
+			},
+						]
+		},
 		
+		{
+			"type": "group",
+			"name": "masterdatas",
+			"label": "name",
+			"cols": 12,
+			  "fields": [
+		   
 			{
 				"type": "date",
 				"name": "appliedDate",
 				"label": "Applied Date ",
-				"required": false
+				"required": false,
+				"col":6
 			},
 			
+	       
 			 {
 					"type": "select",
 					"name": "departmentId",
@@ -50,8 +69,11 @@
 						"value": "id",
 						"label": "name"
 					},
-					"required": true
-			},{
+					"required": true,
+					"col":6
+					
+			},
+			{
 				"type": "select",
 				"name": "recruitmentSourceId",
 				"label": "Recruitment Source",
@@ -60,9 +82,10 @@
 					"value": "id",
 					"label": "name"
 				},
-				"required": true
+				"required": true,
+				"col":6
 			},
-			{
+				{
 				"type": "select",
 				"name": "designationId",
 				"label": "Vacancy",
@@ -71,7 +94,8 @@
 							"value": "id",
 							"label": "name"
 						},
-						"required": true
+						"required": true,
+						"col":6
 			},
 			{
 				"type": "select",
@@ -82,6 +106,7 @@
 							"value": "id",
 							"label": "name"
 						},
+						"col":6
 					
 			},
 			{
@@ -93,10 +118,14 @@
 							"value": "id",
 							"label": "name"
 						},
+						"col":6
 						
 			},
+						]
+		},
+		
 			{
-				"type": "text",
+				"type": "textarea",
 				"name": "comments",
 				"label": "Comments",
 				"required": true,
@@ -115,10 +144,8 @@
 				"label": "Mobile",
 				"placeHolder": "Mobile"
 			},
-				
-		
 			{
-				"type": "text",
+				"type": "file",
 				"name": "resume",
 				"label": "Resume",
 				

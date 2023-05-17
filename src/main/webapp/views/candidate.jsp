@@ -12,21 +12,34 @@
 			<%@include file="../theme/header.jsp"%>
 		</div>
 		<div class="col-md-9">
-			<div class="container">
-				<div class="row">
-					<div class="col" id="candidateContainer" style="margin-top: 8%">
-						<h3>Candidate</h3>
-						<form id="candidateForm"></form>
-					</div>
+			
+			<div class="row">
+			<div class="col-md-11">
+				<div id="candidateContainer" style="margin-top: 8%"></div>
 				</div>
 			</div>
+					<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-4" id="fullName">
+						</div>
+						<!-- <div class="col-md-6" id="contact">
+						</div> -->
+					</div>
+					</div>
+					
+					<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-6" id="masterdatas">
+						</div>
+				  </div>
+				  </div>
 		</div>
 		</div>
 	
 </body>
 
 <script>
-	var id="<%=request.getParameter("id")!=null? request.getParameter("id"):""%>";
+	var id="<%=request.getParameter("id")!=null ? request.getParameter("id"):""%>";
 	console.log("id"+id);
 	$(document).ready(() => {
 		var jetform=JetForm({"id":"candidateForm", "parentId":"candidateContainer", "form":candidateForm});
