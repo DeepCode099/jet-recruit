@@ -35,7 +35,9 @@ function loadTemplates(){
 		    form_actions : '#jf-form-actions-template',
 		    link : '#jf-link-template',
 		    modal : '#jf-modal-template',
-		    confirm : '#jf-confirm-template'
+		    confirm : '#jf-confirm-template',
+		    time:'#jf-time-template'
+		    
 		};
 	}
 }
