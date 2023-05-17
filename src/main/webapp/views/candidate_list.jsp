@@ -2,9 +2,8 @@
 <html>
 <head>
 <%@include file="../theme/cdn.jsp" %>
-<script type="text/javascript" src="../js/forms/candidate.js"></script>
+<script type="text/javascript" src="../js/forms/candidate_list.js"></script>
 </head>
-
 <body>
 	<div class="row">
 		<div class="col-md-3">
@@ -13,7 +12,7 @@
 		</div>
 		<div class="col-md-9">
 			<div class="container">
-					<div id="candidateContainer" style="margin-top: 8%"></div>
+					<div id="clientListFormContainer" style="margin-top: 8%"></div>
 				</div>
 			</div>
 		</div>	
@@ -21,7 +20,7 @@
 
 <script>
 	$(document).ready(() => {
-		var jetList=JetList({"id":"candidateList", "parentId":"candidateContainer", "form":candidateForm});
+		var jetList=JetList({"id":"candiateListForm", "parentId":"clientListFormContainer", "form":candidateListForm});
 		jetList.render();
 	});
 </script>
