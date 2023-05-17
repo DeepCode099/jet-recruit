@@ -1,35 +1,44 @@
-const templates = {            //object for mapping object to id
-    text: '#jf-text-template',
-    hidden: '#jf-hidden-template',
-    date: '#jf-date-template',
-    submit: '#jf-button-template',
-    email: '#jf-email-template',
-    password: '#jf-password-template',
-    number: '#jf-number-template',
-    select : '#jf-select-template',
-    radio: '#jf-radio-template',
-    checkbox : '#jf-checkbox-template',
-    file : '#jf-file-template',
-    list : '#jf-list-template',
-    datatable: '#jf-datatable-template',
-    form : '#jf-form-template',
-	list_header : '#jf-list-header-template',
-	list_actions : '#jf-list-actions-template',
-	row_actions : '#jf-row-actions-template',
-    list_text: '#list-text-template',
-    list_date: '#list-date-template',
-    list_email: '#list-email-template',
-    list_password: '#list-password-template',
-    list_number: '#list-number-template',
-    list_select : '#list-select-template',
-    list_radio: '#list-radio-template',
-    list_checkbox : '#list-checkbox-template',
-    list_file : '#list-file-template',
-    group : '#jf-field-group-template',
-    button : '#jf-button-template',
-    form_actions : '#jf-form-actions-template',
-    link : '#jf-link-template'
-};
+var templates;
+function loadTemplates(){
+	if(templates == undefined){
+		templates = {            //object for mapping object to id
+		    text: '#jf-text-template',
+		    textarea: '#jf-textarea-template',
+		    hidden: '#jf-hidden-template',
+		    date: '#jf-date-template',
+		    submit: '#jf-button-template',
+		    email: '#jf-email-template',
+		    password: '#jf-password-template',
+		    number: '#jf-number-template',
+		    select : '#jf-select-template',
+		    radio: '#jf-radio-template',
+		    checkbox : '#jf-checkbox-template',
+		    file : '#jf-file-template',
+		    list : '#jf-list-template',
+		    datatable: '#jf-datatable-template',
+		    form : '#jf-form-template',
+			list_header : '#jf-list-header-template',
+			list_actions : '#jf-list-actions-template',
+			row_actions : '#jf-row-actions-template',
+		    list_text: '#list-text-template',
+		    list_textarea: '#list-textarea-template',
+		    list_date: '#list-date-template',
+		    list_email: '#list-email-template',
+		    list_password: '#list-password-template',
+		    list_number: '#list-number-template',
+		    list_select : '#list-select-template',
+		    list_radio: '#list-radio-template',
+		    list_checkbox : '#list-checkbox-template',
+		    list_file : '#list-file-template',
+		    group : '#jf-field-group-template',
+		    button : '#jf-button-template',
+		    form_actions : '#jf-form-actions-template',
+		    link : '#jf-link-template',
+		    modal : '#jf-modal-template',
+		    confirm : '#jf-confirm-template'
+		};
+	}
+}
 
 function JetForm (config) {
 	let jetForm = Object.create(JetForm.prototype)
@@ -55,10 +64,15 @@ JetForm.prototype.setDataKey = function(value) {
 	setDataKey(form, value);
 }
 
+JetForm.prototype.setDialogMode = function(dialogMode) {
+	this.form.dialogMode = (dialogMode == 'true' || dialogMode == 'TRUE');
+}
+	
 JetForm.prototype.render = function() {
 	var _this = this;
 	var form = _this.form;
 	//var data = form.data;
+	loadTemplates();
 	
 	if($('#'+form.id).length==0){
 		_this.renderForm();
@@ -76,6 +90,11 @@ JetForm.prototype.render = function() {
 		_this.bindValidations();
 	}
     
+    _this.renderModal();
+}
+
+JetForm.prototype.renderModal = function() {
+	renderModal(this.form);
 }
 
 JetForm.prototype.readObjectValues = function() {
@@ -270,15 +289,16 @@ JetForm.prototype.loadOptionsFields = function() {
 }
 
 JetForm.prototype.loadOptionsField = function(field) {
-	console.log(field.name);
-	console.log(field.provider);
+	//console.log(field.name);
+	//console.log(field.provider);
 	var form = this.form;
 	var target;
 	$('#'+field.name).empty();
 	$("#" + field.name).append(new Option("Select "+field.label, "-1"));
 
     if (field.provider != undefined && field.provider.ajax !=undefined) {
-    	callAjax(form, field, target, field.provider, this.populateOptions, console.log);
+		callAjax(form, field, target, field.provider, this.populateOptions);
+    	//callAjax(form, field, target, field.provider, this.populateOptions, console.log);
     }
 }
 
@@ -342,7 +362,7 @@ function findAction (event){
 	 var actionName=$(target).attr("name");
 	 var actionType=$(target).attr("type");
 	 var applyTo=$(target).attr("applyto");
-	 //console.log(actionName+" - "+actionType+" - "+applyTo);
+	 console.log(actionName+" - "+actionType+" - "+applyTo);
 	 //console.log("formId - " +$(target).attr('formId'));
 	 
 	 var _this = window[$(target).attr('formId')];
@@ -637,7 +657,7 @@ JetForm.prototype.bindEventReceivers = function(eventSource, receivers){
 JetForm.prototype.refillField = function(fieldName){
 	var _this = this;
 	var field=_this.findFieldByName(fieldName);
-	_this.fillFieldOptions(field);
+	_this.loadOptionsField(field);
 }
 
 JetForm.prototype.bindValidations = function(){
@@ -689,6 +709,47 @@ JetForm.prototype.transientFields = function(){
 	});
 	return tranzients;
 }
+
+JetForm.prototype.listFields = function(){
+	var form = this.form;
+	var list=[];
+	var ctr=0;
+	form.fields.forEach(field => {
+		if(field.type!='group'){
+			if(field.type=='list'){
+				list[ctr++]=field.name;
+			}
+		}else{
+			field.fields.forEach(subfield => {
+				if(subfield.type=='list'){
+					list[ctr++]=subfield.name;
+				}
+			});
+		}
+	});
+	return list;
+}
+
+JetForm.prototype.isListField = function(name){
+	var form = this.form;
+	var isList = false;
+	form.fields.forEach(field => {
+		if(isList == false ){
+			if(field.type!='group'){
+				if(field.name == name && field.type=='list'){
+					isList=true;
+				}
+			}else{
+				field.fields.forEach(subfield => {
+					if(subfield.name == name &&  subfield.type=='list'){
+						isList=true;
+					}
+				});
+			}
+		}
+	});
+	return isList;
+}
 	
 function actionOnClick(event){
 	 event.preventDefault();
@@ -730,35 +791,18 @@ function onSaveFailure(form, field, error, redirect){
 
 function cancelOnClick(event){
 	event.preventDefault();
-	var target = $( event.target);
-	var nodeName = $(target).prop('nodeName').toLowerCase();
 	
-	if(nodeName!='a' && nodeName!='button'){
-		target=$(target).parent();
-	}
-	
-	console.log($(target).attr("name"));
-	
+	var form = getEventForm(event);
 	var action = findAction(event);
 	
-	var redirects=action.redirects;
-	
-	var success = redirects.success;
-	
-	/*$.each(redirects, function(key, item) {
-		
-		if(key == 'success'){
-			success=item;
-		}
-	});*/
-		
-	if(success!=undefined){
-		if(success.href != undefined && success.href !=''){
-			window.location.href=success.href;
-		}else if(success.url != undefined && success.url !=''){
+	if(action.handler != undefined){
+		var handler = action.handler;
+		if(handler.href != undefined){
+			window.location.href=handler.href;
+		}else if(handler.ajax != undefined){
 			$.ajax({
-		        url: success.url,
-		        type: success.method,
+		        url: handler.ajax,
+		        type: (handler.method != undefined? handler.method: "GET"),
 		        contentType: 'application/json'
 		        })
 		        .done(function(response) {
@@ -767,22 +811,36 @@ function cancelOnClick(event){
 		        .fail(function(data) {
              		console.log(data);
          		});
-		}else if(success.script != undefined && success.url !=''){
+		}else if(handler.script != undefined){
 			executeFunctionByName(success, window, event);
+		}else{
+			alert('No action defined for Cancel.');
 		}
 	}else{
-		alert('No action defined for Cancel.');
+		//alert("before calling hide - "+form.id);
+		//var modal = window[form.id+'Modal'];
+		//$('.modal').modal('dispose');
+		$('.modal').modal('hide');
+//		$('.modal').hide();
+		//modal.dispose();
+		//$('#'+form.id+'Modal').modal('hide');
+		//$('#'+form.id+'Modal').modal('dispose');
+		//alert("after calling hide");
+		//history.go(-1);
 	}
-	
+
 }
 
 function invokeUrl(event){
 	var target = getEventTarget(event);
+	console.log(target);
 	var _this=getTargetFormParent(target);
 	var form = _this.form;
+	console.log(target);
 	//var idField =findIdField(form);
 	var idField =form.idField;
 	var action = findAction(event)
+	console.log(target);
 	var dataKey = $(target).attr('datakey');
 	var handler=action.handler;
 	//console.log(handler);
@@ -830,10 +888,12 @@ function executeFunctionByName (functionName, context, args) {
 		var jetform = window[$(this).attr('id')];
 		var tranzients=jetform.transientFields();
 		
-        var o = {};
-        var n = {};
-        var a = this.serializeArray();
-        $.each(a, function () {
+        var fd = {};
+        var sn = {};
+        var lst = {};
+        var raw = this.serializeArray();
+        //console.log(a);
+        $.each(raw, function () {
 			var istrans=false;
 			var name=this.name;
 			$.each(tranzients, function (i, t) {
@@ -844,53 +904,90 @@ function executeFunctionByName (functionName, context, args) {
 			
 			if(!istrans){
 				if(this.name.indexOf(".")>0){
-					var tmp=this.name;
-					var si = 0;
-					var keys =[];
+					
+					var name=this.name.substring(this.name.lastIndexOf(".")+1);
+					
+					var keys = this.name.substring(0, this.name.lastIndexOf(".")).split(".");
+					
+					/*var si = 0;
 					while(tmp.indexOf(".")>=0){
 						var li = tmp.indexOf(".",si+1);
 						keys[keys.length++] = tmp.substring (si, li);
 						tmp=tmp.substring(li+1, tmp.length);
-					}
+					}*/
 					//console.log(this.name+" - key[0] : "+keys[0]+" - tmp : "+tmp);
-					var ob = {};
-					if(keys.length>=1){
-						if(n[keys[0]] == undefined ){
-							n[keys[0]]={};
-						}
-						ob=n[keys[0]];
-					}
-					if(keys.length>=2){
-						if(n[keys[0]][keys[1]] == undefined ){
-							n[keys[0]][keys[1]]={};
-						}
-						ob=n[keys[0]][keys[1]];
-					}
 					
-					if(keys.length>=3){
-						if(n[keys[0]][keys[1]][keys[2]] == undefined ){
-							n[keys[0]][keys[1]][keys[2]]={};
+					if(!jetform.isListField(keys[0])){
+					
+						var ob = {};
+						
+						if(keys.length>=1){
+							if(sn[keys[0]] == undefined ){
+								sn[keys[0]]={};
+							}
+							ob=sn[keys[0]];
 						}
-						ob=n[keys[0]][keys[1]][keys[2]];
+						if(keys.length>=2){
+							if(sn[keys[0]][keys[1]] == undefined ){
+								sn[keys[0]][keys[1]]={};
+							}
+							ob=sn[keys[0]][keys[1]];
+						}
+						
+						if(keys.length>=3){
+							if(sn[keys[0]][keys[1]][keys[2]] == undefined ){
+								sn[keys[0]][keys[1]][keys[2]]={};
+							}
+							ob=sn[keys[0]][keys[1]][keys[2]];
+						}
+						ob[name]=this.value;
+					}else{
+						//console.log(keys +" -- "+name+" -- "+this.value);
+						if(lst[keys[0]] == undefined){
+							lst[keys[0]] = [];
+						}
+						
+						var listFld = lst[keys[0]];
+						//console.log(listFld);
+						//console.log("listFld.length : "+listFld.length);
+						var vset = false;
+						for(var i=0; i<listFld.length; i++){
+							//console.log(i+" ====");
+							e=listFld[i];
+							//console.log(e);
+							if(e[name] == undefined){
+								e[name] = this.value;
+								vset = true;
+								break;
+							}	
+						}
+						
+						if(!vset){
+							//console.log("inserting "+name+ " -- "+ this.value+" -- at "+listFld.length);
+							listFld[listFld.length] = {};
+							listFld[listFld.length-1][name] = this.value;
+						}
 					}
-					ob[tmp]=this.value;
 				}else{
-		            if (o[this.name]) {
-		                if (!o[this.name].push) {
-		                    o[this.name] = [o[this.name]];
+		            if (fd[this.name]) {
+		                if (!fd[this.name].push) {
+		                    fd[this.name] = [fd[this.name]];
 		                }
-		                o[this.name].push(this.value || '');
+		                fd[this.name].push(this.value || '');
 		            } else {
-		                o[this.name] = this.value || '';
+		                fd[this.name] = this.value || '';
 		            }
             	}
             }
         });
-        console.log(n);
-        $.each(n, function (key, item) {
-			o[key]=item;
+        //console.log(lst);
+        $.each(sn, function (key, item) {
+			fd[key]=item;
 		});
-        return o;
+		$.each(lst, function (key, item) {
+			fd[key]=item;
+		});
+        return fd;
     };
 })(jQuery);
 
@@ -936,10 +1033,11 @@ JetList.prototype.setDataKey = function(value) {
 }
 
 JetList.prototype.render = function(){
-	
+	loadTemplates();
 	this.renderListHeader();
 	this.renderListActions();
 	this.renderList();
+	this.renderModal();
 }
 JetList.prototype.renderListHeader = function() {
 	var _this = this;
@@ -1010,41 +1108,60 @@ JetList.prototype.renderList = function() {
         		if(field.type!='hidden'){
 
 					if(field.view != undefined){
+						//var renderFun;
 						if(field.type == 'file'){
 							if(field.view == 'thumbnail'){
-								columnDefs[colDefCtr++] = {
-									'targets': colCtr,
-				        		    'searchable': false,
-				        		    'orderable': false,
-				        		    'className': 'dt-body-nowrap',
-				        		    'render': function (data, type, full, meta){
-				        		        return _this.renderThumbnailView(data, type, full, meta);
+								//renderFun = _this.renderThumbnailView;
+								 columnDefs[colDefCtr] = {
+				        		   'render': function (data, type, row, meta){
+				        		        return _this.renderThumbnailView(data, type, row, meta);
 				        		    }
 								}
 							}else if(field.view == 'download'){
-								columnDefs[colDefCtr++] = {
-									'targets': colCtr,
+								//renderFun = _this.renderDownloadView;
+								columnDefs[colDefCtr] = {
+									/*'targets': colCtr,
 				        		    'searchable': false,
 				        		    'orderable': false,
-				        		    'className': 'dt-body-nowrap',
-				        		    'render': function (data, type, full, meta){
-				        		        return _this.renderDownloadView(data, type, full, meta);
+				        		    'className': 'dt-body-nowrap',*/
+				        		    'render': function (data, type, row, meta){
+				        		        return _this.renderDownloadView(data, type, row, meta);
+				        		    }
+								}
+							}else if(field.view == 'filelink'){
+								//renderFun = _this.renderDownloadView;
+								columnDefs[colDefCtr] = {
+									/*'targets': colCtr,
+				        		    'searchable': false,
+				        		    'orderable': false,
+				        		    'className': 'dt-body-nowrap',*/
+				        		    'render': function (data, type, row, meta){
+				        		        return _this.renderFileLinkView(data, type, row, meta);
 				        		    }
 								}
 							}
 						}else if(field.type == 'text'){
 							if(field.view == 'folder'){
-								columnDefs[colDefCtr++] = {
-									'targets': colCtr,
-				        		    'searchable': false,
-				        		    'orderable': false,
-				        		    'className': 'dt-body-nowrap',
-				        		    'render': function (data, type, full, meta){
-				        		        return _this.renderFolderView(data, type, full, meta);
+								//renderFun = _this.renderFolderView;
+								columnDefs[colDefCtr] = {
+				        		    'render': function (data, type, row, meta){
+				        		        return _this.renderFolderView(data, type, row, meta);
 				        		    }
 								}
 							}
 						}
+						
+				        /*console.log(columnDefs[colDefCtr]);
+				        console.log("colCtr : "+colCtr);*/
+				        if(columnDefs[colDefCtr] != undefined){		    
+							columnDefs[colDefCtr]['targets'] = colCtr;
+		        		    columnDefs[colDefCtr]['searchable'] = false;
+		        		    columnDefs[colDefCtr]['orderable'] = false;
+		        		    columnDefs[colDefCtr]['className'] = 'dt-body-nowrap';
+	        		    	colDefCtr++;
+	        		    }
+	        		    
+	        		    
 					}
 					columns[colCtr++]= { "data": field.name, "title":field.label};
 				}
@@ -1061,7 +1178,7 @@ JetList.prototype.renderList = function() {
     		    }
 			};
         	
-        	console.log(columnDefs);
+        	//console.log(columnDefs);
         	var data;
         	
         	if(provider.dataNode != undefined && provider.dataNode != ''){
@@ -1070,7 +1187,7 @@ JetList.prototype.renderList = function() {
 				data = response;
 			}
 			
-        	console.log(columns);
+        	//console.log(columns);
         	//console.log(data);
         	
         	var table= $('#'+form.id).DataTable({ 
@@ -1078,7 +1195,6 @@ JetList.prototype.renderList = function() {
         		data: data,
         		columns: columns,
         		columnDefs: columnDefs,
-        		select: selectable,
         	});
         	if(_this.showIndex != undefined && _this.showIndex == true){
 	        	table.on('order.dt search.dt', function () {
@@ -1096,18 +1212,27 @@ JetList.prototype.renderList = function() {
     });
 }
 
-JetList.prototype.renderThumbnailView = function(data, type, full, meta) {
+JetList.prototype.renderThumbnailView = function(data, type, row, meta) {
 	return "<img src='"+data+"'>";
 }
 
-JetList.prototype.renderDownloadView = function(data, type, full, meta) {
+JetList.prototype.renderDownloadView = function(data, type, row, meta) {
 	return "<a href='"+data+"' target='_blank'><i class='fa fa-cloud-download' aria-hidden='true'></i></a>";
 }
 
-JetList.prototype.renderFolderView = function(data, type, full, meta) {
+JetList.prototype.renderFolderView = function(data, type, row, meta) {
 	return "<i class='fa fa-folder-o' aria-hidden='true'></i>&nbsp;"+data;
 }
 
+JetList.prototype.renderFileLinkView = function(data, type, row, meta) {
+	//console.log(data);
+	var fileName=(data.lastIndexOf("/")>=0? data.substring(data.lastIndexOf("/")+1): data);
+	fileName=(fileName.lastIndexOf("\\")>=0? fileName.substring(fileName.lastIndexOf("\\")+1): fileName);
+	var extn=fileName.substring(fileName.lastIndexOf(".")).toLowerCase();
+	var icon=getFaFileIcon(extn);
+	
+	return "<a href='"+data+"' target='_blank' style='text-decoration:none;'><i class='fa "+icon+"' aria-hidden='true'></i>&nbsp;"+fileName+"</a>";
+}
 
 JetList.prototype.renderRowActions = function(data) {
 	var _this = this;
@@ -1132,6 +1257,9 @@ JetList.prototype.renderRowActions = function(data) {
 	return html;
 }
 
+JetList.prototype.renderModal = function() {
+	renderModal(this.form);
+}
 /*JetList.prototype.getIdField = function(){
 	var _this = this;
 	var form = _this.form;
@@ -1168,6 +1296,8 @@ function addOnClick(event){
 		
 		if(handler.href != undefined){
 			window.location.href=handler.href;
+		}else if(handler.dialog != undefined){
+			openDialog(event);
 		}else if(handler.ajax != undefined){
 			$.ajax({
 		        url: handler.ajax,
@@ -1221,19 +1351,31 @@ function editOnClick(event){
 
 function deleteOnClick(event){
 	event.preventDefault();
-	if(confirm("Are you sure you want to delete the record!")){
-		deleteData(event);
+	var form = getEventForm(event);
+	
+	var options = {
+		"title": "Delete "+form.title,
+		"body":"Are you sure you want to delete?",
+		"confirmLabel" :"Yes",
+		"cancelLabel" : "No",
+		"showFooter" : true
+		//"confirmFunc" : deleteData
 	}
+	
+	openConfirmDialog(event, options, deleteData);
+	/*if(confirm("Are you sure you want to delete the record!")){
+		deleteData(event);
+	}*/
 }
 
 function editData(event){
 	var target = getEventTarget(event);
 	var action = findAction(event);
 		
-	if(action.handler !=undefined && action.handler.href != undefined){
+	if(action.handler !=undefined){
 		var handler = action.handler;
 		
-		redirectUrl(target, handler);
+		redirectUrl(event, target, handler);
 
 	}
 }
@@ -1291,6 +1433,11 @@ function getTargetForm(target){
 	return form;
 }
 
+function getEventFormParent(event){
+	var target = getEventTarget(event);
+	var jet = getTargetFormParent(target);
+	return jet;
+}
 function getTargetFormParent(target){
 	var jet = window[$(target).attr('formId')];
 	return jet;
@@ -1425,18 +1572,22 @@ function callAjax(form, field, action, provider, successFunc, failureFunc){
 	         dataType: dataType,
 	         contentType: contentType
 	     }).done(function(response) {
-			var data = (provider.dataNode == undefined? response: response[provider.dataNode] );
-			successFunc(form, field, action, data);
+			if(successFunc != undefined){
+				var data = (provider.dataNode == undefined? response: response[provider.dataNode] );
+				successFunc(form, field, action, data);
+			}
 		
 		}).fail(function(error) {
-			failureFunc(form, field, action, error);
+			if(failureFunc != undefined){
+				failureFunc(form, field, action, error);
+			}
 		});
 	}else{
 		console.log("Provider is undefined or provider.ajax is undefined.");
 	}
 }
 
-function redirectUrl(action, handler){
+function redirectUrl(event, action, handler){
 	var form;
 	var idField;
 	var dataKey;
@@ -1448,29 +1599,37 @@ function redirectUrl(action, handler){
 		dataKey = $(action).attr('datakey');
 	}
 	
-	var url = handler.href;
-	
-	var pathParams = handler.pathParams;
-	if(pathParams == undefined){
-		pathParams = {};
-	}
-	
-	if(idField != undefined && dataKey != undefined){
-		pathParams[idField.name] = dataKey;
-	}
-
-    if(url.indexOf("{") > 0){
-		url = formatMessage(url, pathParams);
+	if(handler.script != undefined){
+		executeFunctionByName();
 	}else{
-		url = appendQueryParam(url, pathParams);
-	}
+		var url = (handler.href != undefined? handler.href : handler.dialog);
+		
+		var pathParams = handler.pathParams;
+		if(pathParams == undefined){
+			pathParams = {};
+		}
+		
+		if(idField != undefined && dataKey != undefined){
+			pathParams[idField.name] = dataKey;
+		}
 	
-	if(handler.queryParams != undefined){
-		url = appendQueryParam(url, handler.queryParams);
+	    if(url.indexOf("{") > 0){
+			url = formatMessage(url, pathParams);
+		}else{
+			url = appendQueryParam(url, pathParams);
+		}
+		
+		if(handler.queryParams != undefined){
+			url = appendQueryParam(url, handler.queryParams);
+		}
+		
+		alert(url);
+		if(handler.href != undefined){
+			window.location.href=url;
+		}else{
+			openDialog(event);
+		}
 	}
-	
-	alert(url);
-	window.location.href=url;
 }
 
 function setDataKey(form, value){
@@ -1496,4 +1655,94 @@ function setDataKey(form, value){
 	}else{
 		console.log("No id field defined for the form");
 	}
+}
+
+function getFaFileIcon(extn){
+	var icon = 'fa-file-o';
+	if(extn == ".pdf"){
+		icon = 'fa-file-pdf-o';
+	}else if(extn == ".doc" || extn == ".docx"){
+		icon = 'fa-file-word-o';
+	}else if(extn == ".xls" || extn == ".xlsx"){
+		icon = 'fa-file-excel-o';
+	}else if(extn == ".ppt" || extn == ".pptx"){
+		icon = 'fa-file-powerpoint-o';	
+	}else if(extn == ".txt"){
+		icon = 'fa-file-text';	
+	}else if(extn == ".jpg" || extn == ".jpeg" || extn == ".png" || extn == ".jpg" || extn == ".gif"){
+		icon = 'fa-file-image-o';
+	}else if(extn == ".zip" || extn == ".rar" || extn == ".7z" || extn == ".zipx" || extn == ".tar" || extn == ".gz"){
+		icon = 'fa-file-archive-o';
+	}else if(extn == ".mp3" || extn == ".mp4" || extn == ".wav" || extn == ".wma" || extn == ".aac" || 
+		extn == ".flac" || extn == ".m4a" || extn == ".m4b" || extn == ".m4p" || extn == ".au"){
+		icon = 'fa-file-audio-o';	
+	}else if(extn == ".mov" || extn == ".wmv" || extn == ".avi" || extn == ".flv" || extn == ".f4v" || 
+		extn == ".swf" || extn == ".webm" || extn == ".mkv" || extn == ".m4p" || extn == ".au"){
+		icon = 'fa-file-video-o';	
+	}
+	return icon;
+}
+
+function renderModal(form){
+	if($('.modal').length<=0){
+		const template = $(templates['modal']).html();
+	    const compiledTemplate = Handlebars.compile(template);
+	    const html = compiledTemplate(form);
+	    $('body').append(html);
+    }
+}  
+
+function openDialog(event){
+	var target = getEventTarget(event);
+	//var _this=getTargetFormParent(target);
+	var form = getTargetForm(target);
+	var action = findAction(event);
+
+	var handler=action.handler
+	var title = action.label+" "+form.title;
+	configureModal(title, '', '', '', false);
+	$('.modal').modal('show').find('.modal-body').load(handler.dialog);
+}
+
+function openConfirmDialog(event, options, confirmFunc, cancelFunc){
+	/*const template = $(templates['confirm']).html();
+    const compiledTemplate = Handlebars.compile(template);
+    const html = compiledTemplate(options);*/
+    //alert(options.title);
+   	configureModal(options.title, options.body, options.confirmLabel, options.cancelLabel, (options.showFooter != undefined && options.showFooter ==true));
+    
+    $('.modal').find('.modal-footer').find('.btn-confirm').click(()=>{
+		alert("Confirm clicked");
+		configureModal('', '', 'Cancel', 'OK', false);
+		$('.modal').modal('hide');
+		var m = bootstrap.Modal.getInstance($(".modal"));
+		//$('.modal').dispose();
+		confirmFunc(event);
+	});
+	
+	$('.modal').find('.modal-footer').find('.btn-cancel').click(()=>{
+		alert("Cancel clicked");
+		configureModal('', '', 'Cancel', 'OK', false);
+		cancelFunc(event);
+		$('.modal').modal('hide').dispose();
+	});
+    $('.modal').modal('show');
+}
+
+function configureModal(title, body, confirmLabel, cancelLabel, showFooter){
+	$('.modal').find('.modal-title').html(title);
+    $('.modal').find('.modal-body').html(body);
+    $('.modal').find('.btn-confirm').html(confirmLabel);
+    $('.modal').find('.btn-cancel').html(cancelLabel);
+    
+    var modalFooter=$('.modal').find('.modal-footer');
+    
+    if(showFooter){
+    	$(modalFooter).removeClass('d-none');
+    }else{
+		$(modalFooter).addClass('d-none');
+	}
+	
+	$(modalFooter).find('.btn-confirm').unbind('click');
+	$(modalFooter).find('.btn-cancel').unbind('click');
 }
