@@ -1,4 +1,3 @@
-
 	var candidateListForm = {
 		"id": "candiateListForm",
 		"parentId":"clientListFormContainer",

@@ -3,9 +3,9 @@
 <html>
 <head>
 <%@include file="../theme/cdn.jsp"%>
-<script type="text/javascript" src="../js/forms/interview.js"></script>
+<script type="text/javascript" src="../js/forms/interview_list.js"></script>
 </head>
-
+<!-- body  -->
 <body>
 	<div class="row">
 		<div class="col-md-3">
@@ -14,18 +14,24 @@
 		</div>
 		<div class="col-md-9">
 			<div class="container">
-					<div id="interviewFormContainer" style="margin-top: 8%"></div>
-				</div>
+				<div id="interviewFormListContainer" style="margin-top: 8%"></div>
 			</div>
-		</div>	
+		</div>
+	</div>
 </body>
 
 <script>
+var id="<%=request.getParameter("id")!=null? request.getParameter("id"):""%>";
 	$(document).ready(() => {
-		var jetList=JetList({"id":"interviewList", "parentId":"interviewFormContainer", "form":interviewForm});
+		var jetList=JetList({"id":"interviewForm", "parentId":"interviewFormListContainer", "form":interviewListForm});
+		jetList.setDataKey(id);
 		jetList.render();
 	});
 </script>
+
 <%@include file="../theme/js_scripts.jsp" %>
 <jsp:include page="../template/jetform-template.jsp"/>
 </html>
+
+
+

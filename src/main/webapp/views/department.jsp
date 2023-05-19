@@ -4,9 +4,7 @@
 
 <%@include file="../theme/cdn.jsp" %>
 <script type="text/javascript" src="../js/forms/department.js"></script>
-
 </head>
-
 <body>
 	<div class="row">
 		<div class="col-md-3">
@@ -14,22 +12,12 @@
 			<%@include file="../theme/header.jsp"%>
 		</div>
 		<div class="col-md-9">
-			
 			<div class="container">
-				<div class="row">
-					<div class="col" id="departmentContainer" style="margin-top: 8%">
-					
-						<form id="department"></form>
-					</div>
-				</div>
+			<div  id="departmentContainer"  style="margin-top:8%"></div>
 			</div>
 		</div>
-		</div>
-	
+	</div>
 </body>
-
-
-
 <script>
    var id="<%=request.getParameter("id")!=null? request.getParameter("id"):""%>";
    console.log("id"+id);

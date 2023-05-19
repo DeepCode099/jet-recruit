@@ -111,7 +111,7 @@
 <script id="jf-select-template" type="text/x-handlebars-template">
 	<div class="form-group">	
 		<label for="{{name}}" class="form-label">{{label}}</label>
-		<select name="{{#if_ne parentNode undefined}}{{parentNode}}.{{/if_ne}}{{name}}" id="{{name}}" class="form-select">
+		<select name="{{#if_ne parentNode undefined}}{{parentNode}}.{{/if_ne}}{{name}}" id="{{name}}" class="form-control">
 			<option value="-1">Select {{label}}</option>
 			{{#each options}}
             	<option value="{{value}}">{{label}}</option>

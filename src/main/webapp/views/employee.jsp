@@ -6,7 +6,6 @@
 <script type="text/javascript" src="../js/forms/employee.js"></script>
 
 </head>
-
 <body>
 	<div class="row">
 		<div class="col-md-3">
@@ -14,20 +13,12 @@
 			<%@include file="../theme/header.jsp"%>
 		</div>
 		<div class="col-md-9">
-			
 			<div class="container">
-				<div class="row">
-					<div class="col" id="employeeContainer" style="margin-top: 8%">
-						<form id="employee"></form>
-					</div>
-				</div>
+			<div  id="employeeContainer"  style="margin-top:8%"></div>
 			</div>
 		</div>
-		</div>
-	
+	</div>
 </body>
-
-
 
 <script>
 	var id="<%=request.getParameter("id")!=null? request.getParameter("id"):""%>";

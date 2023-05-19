@@ -21,6 +21,7 @@
 </body>
 
 <script>
+
 	$(document).ready(() => {
 		var jetList=JetList({"id":"departmentList", "parentId":"departmentContainer", "form":department});
 		jetList.render();
